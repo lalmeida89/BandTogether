@@ -1,0 +1,23 @@
+get authentication keys for FB, google, and twitter
+go to tutorial and figure it out
+design the database
+
+
+users: [{
+  _id,
+  name,
+  password,
+  email,
+  bio,
+  url,
+  likes: [userId, ...]
+  dislikes: [userId, ...]
+  matches:[
+    {userId, chatroomId},
+    {...}]
+}, {...}]
+
+chatrooms: {
+  _id,
+
+}
