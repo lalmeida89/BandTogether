@@ -19,6 +19,11 @@ module.exports = function(app, passport) {
         });
       })
     });
+    app.post('/profile', isLoggedIn, function(req, res) {
+      console.log(req.body);
+      console.log(req.user);
+    })
+
 
     app.get('/band-profile', isLoggedIn, function(req, res) {
       res.render('band-profile.ejs', {

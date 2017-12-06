@@ -17,9 +17,14 @@
         <a href="/artist-profile" class="btn btn-default btn-sm">Artist looking for band</a>
         <a href="/logout" class="btn btn-default btn-sm">Logout</a>
     </div>
+    <ul>
     <% for (var i = 0; i < all.length; i++) { %>
-      <%= all[i] %>
+      <li data-id= '<%= all[i].id %>'><%= all[i].local.email %>
+        <button value='like'>Like</button>
+        <button value='dislike'>Dislike</button>
+      </li>
       <% } %>
+    </ul>
     <div class="row">
 
         <!-- LOCAL INFORMATION -->
@@ -115,5 +120,30 @@
     </div>
 
 </div>
+<script
+  src="https://code.jquery.com/jquery-3.2.1.js"
+  integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+  crossorigin="anonymous"></script>
+
+<script>
+  $('button').click (function(e) {
+    window.par = this;
+    console.log($(this).parent().data('id'))
+    let id = $(this).parent().data('id');
+    let value = this.value;
+    $.post('',
+    {
+        id    : id,
+        value : value
+    },
+    function(data, status){
+        console.log("Data: " + data + "\nStatus: " + status);
+    });
+});
+
+
+
+ </script>
+
 </body>
 </html>
