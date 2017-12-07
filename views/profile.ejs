@@ -19,9 +19,13 @@
     </div>
     <ul>
     <% for (var i = 0; i < all.length; i++) { %>
-      <li data-id= '<%= all[i].id %>'><%= all[i].local.email %>
-        <button value='like'>Like</button>
-        <button value='dislike'>Dislike</button>
+      <li data-id= '<%= all[i].id %>'>
+        <%= all[i].local.name %>
+        <%= all[i].facebook.name %>
+        <%= all[i].local.email %>
+        <%= all[i].google.name %>
+        <button class='likeButton' value='likes'>Like</button>
+        <button class='dislikeButton' value='dislikes'>Dislike</button>
       </li>
       <% } %>
     </ul>
@@ -69,9 +73,9 @@
             </div>
         </div>
     </div>
-    <div class="row">
+    <!--<div class="row">
 
-        <!-- TWITTER INFORMATION -->
+         TWITTER INFORMATION 
         <div class="col-sm-6">
             <div class="well">
                 <h3 class="text-info"><span class="fa fa-twitter"></span> Twitter</h3>
@@ -90,7 +94,7 @@
                 <% } %>
 
             </div>
-        </div>
+        </div> -->
 
         <!-- GOOGLE INFORMATION -->
         <div class="col-sm-6">
@@ -140,6 +144,7 @@
         console.log("Data: " + data + "\nStatus: " + status);
     });
 });
+
 
 
 

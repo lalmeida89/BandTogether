@@ -21,7 +21,29 @@ module.exports = function(app, passport) {
     });
     app.post('/profile', isLoggedIn, function(req, res) {
       console.log(req.body);
-      console.log(req.user);
+      //console.log(req.user, req.user._id);
+      /*User.findOne({_id:req.user._id}).exec().then(me => {
+        console.log('me');
+        //me['likes'];
+        console.log(req.body.value);
+        me[req.body.value].push(req.body.id);
+        me.save();
+      })*/
+
+
+      //check for likes from another user
+      User.findOne({_id:req.body.id}).exec().then(them => {
+        if (them.likes.indexOf(req.user._id) != -1){
+          //once we find a match, create match id
+          them.matches.push({userId:req.user._id});
+          req.user.matches.push({userId: req.body.id});
+          them.save();
+        }
+        //saves likes and dislikes to logged in user
+        req.user[req.body.value].push(req.body.id);
+        req.user.save();
+      })
+
     })
 
 
