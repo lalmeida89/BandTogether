@@ -67,7 +67,8 @@
           <input class='genreChoices' type="checkbox" name="genre" value="Experimental"> Experimental<br>
           <input class='genreChoices' type="checkbox" name="genre" value="Electronic"> Electronic
       </section>
-      <button type="submit" class="save-button hidden">Save</button>
+      <!--<button type="submit" class="save-button hidden">Save</button>-->
+      <a href="/profile" class="save-button btn btn-default"><span class="fa fa-user"></span> Submit</a>
     </div>
 
 
@@ -92,15 +93,16 @@
   });
 
   $('.save-button').click (function(e) {
-            let genres = [];
-            $.each($("input[name='genre']:checked"), function(){
-                genres.push($(this).val());
-                console.log(genres);
-                $.post('',
-                {
-                  genres : genres
+    event.preventDefault();
+      let bio = $('input[name="band-bio"]').val();
+      let name = $('input[name="band-name"]').val();
+      console.log(bio);
+      console.log(name);
+      let genres = [];
+        $.each($("input[name='genre']:checked"), function(){
+            genres.push($(this).val());
+            console.log(genres);
 
-                })
 
             });
       });
