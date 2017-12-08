@@ -1,0 +1,96 @@
+<!doctype html>
+<html>
+<head>
+    <title>Node Authentication</title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+    <style>
+        body         { padding-top:80px; word-wrap:break-word; }
+        .hidden       { display:none; }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <div class="page-header text-center">
+        <h1><span class="fa fa-anchor"></span>Customize Your Profile</h1>
+    </div>
+
+    <div class='music-selector'>
+      <button type='submit' class='artist-seeking'>Artist seeking Bandmates</input>
+      <button type='submit' class='band-seeking'>Band seeking Artist </input>
+
+    <div class="row artist-info hidden">
+      <!--artist info, bio, and images -->
+      <div class="form-group">
+          <label>Artist's Name</label>
+          <input type="text" class="form-control" name="artist-name">
+      </div>
+      <div class="form-group">
+          <label>A little bit about yourself:</label>
+          <input type="text" class="form-control" name="artist-bio">
+      </div>
+      <form class='genreChoices'>
+          <label>Genre</label>
+          <input type="checkbox" name="genre" value="Rock"> Rock<br>
+          <input type="checkbox" name="genre" value="IndieRock"> Indie<br>
+          <input type="checkbox" name="genre" value="Alternative"> Alternative<br>
+          <input type="checkbox" name="genre" value="Hip-hop"> Hip-hop<br>
+          <input type="checkbox" name="genre" value="Metal"> Metal<br>
+          <input type="checkbox" name="genre" value="Psychadelic"> Psychadelic<br>
+          <input type="checkbox" name="genre" value="Experimental"> Experimental<br>
+          <input type="checkbox" name="genre" value="Electronic"> Electronic 
+      </form>
+      <button type="submit" class="btn btn-warning btn-lg">Save</button>
+    </div>
+
+
+
+        <!-- band info, bio, and images. -->
+    <div class="row band-info hidden">
+      <div class="form-group band-info">
+          <label>Band name</label>
+          <input type="text" class="form-control" name="band-name">
+      </div>
+      <div class="form-group">
+          <label>A little bit about your band</label>
+          <input type="text" class="form-control" name="band-bio">
+      </div>
+      <form class='genreChoices'>
+          <label>Genre</label>
+          <input type="checkbox" name="genre" value="Rock"> Rock<br>
+          <input type="checkbox" name="genre" value="IndieRock"> Indie<br>
+          <input type="checkbox" name="genre" value="Alternative"> Alternative<br>
+          <input type="checkbox" name="genre" value="Hip-hop"> Hip-hop<br>
+          <input type="checkbox" name="genre" value="Metal"> Metal<br>
+          <input type="checkbox" name="genre" value="Psychadelic"> Psychadelic<br>
+          <input type="checkbox" name="genre" value="Experimental"> Experimental<br>
+          <input type="checkbox" name="genre" value="Electronic"> Electronic>
+      </form>
+      <button type="submit" class="btn btn-warning btn-lg">Save</button>
+    </div>
+
+
+
+</div>
+<script
+  src="https://code.jquery.com/jquery-3.2.1.js"
+  integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+  crossorigin="anonymous"></script>
+
+<script>
+  $('.band-seeking').click (function(e) {
+    e.preventDefault();
+    $('.band-info').removeClass('hidden');
+  });
+
+  $('.artist-seeking').click (function(e) {
+    e.preventDefault();
+    $('.artist-info').removeClass('hidden');
+  });
+
+
+ </script>
+
+</body>
+</html>

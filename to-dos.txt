@@ -1,5 +1,5 @@
-get authentication keys for FB, google, and twitter
-go to tutorial and figure it out
+get authentication keys for FB, google, and twitter : done
+go to tutorial and figure it out : done
 design the database
 
 
@@ -21,3 +21,6 @@ chatrooms: {
   _id,
 
 }
+
+create a customize page after first sign in. then check every time a user logs in if a customize page
+has been created. if yes, redirect to profile page. if not, redirect to customize page. 

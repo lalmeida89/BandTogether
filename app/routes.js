@@ -8,6 +8,10 @@ module.exports = function(app, passport) {
         res.render('index.ejs');
     });
 
+    app.get('/customize', function(req, res) {
+        res.render('customize.ejs');
+    });
+
     // PROFILE SECTION =========================
     app.get('/profile', isLoggedIn, function(req, res) {
       User.find().exec().then(x => {
@@ -91,7 +95,7 @@ module.exports = function(app, passport) {
 
         // process the signup form
         app.post('/signup', passport.authenticate('local-signup', {
-            successRedirect : '/profile', // redirect to the secure profile section
+            successRedirect : '/customize', // redirect to the secure profile section
             failureRedirect : '/signup', // redirect back to the signup page if there is an error
             failureFlash : true // allow flash messages
         }));

@@ -8,11 +8,13 @@ var userSchema = mongoose.Schema({
         likes        : Array,
         dislikes     : Array,
         matches      : Array,
-        
+
     local            : {
         email        : String,
         password     : String,
-        music        : String
+        music        : String,
+        bio          : String,
+        
     },
     facebook         : {
         id           : String,
