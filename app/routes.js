@@ -100,6 +100,16 @@ module.exports = function(app, passport) {
             failureFlash : true // allow flash messages
         }));
 
+        app.get('/customize', function(req, res) {
+            res.render('customize.ejs', { message: req.flash('signupMessage') });
+        });
+
+        app.post('/customize', passport.authenticate('local-signup', {
+            successRedirect : '/profile', // redirect to the secure profile section
+            failureRedirect : '/customize', // redirect back to the signup page if there is an error
+            failureFlash : true // allow flash messages
+        }));
+
     // facebook -------------------------------
 
         // send to facebook to do the authentication

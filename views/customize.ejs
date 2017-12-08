@@ -30,8 +30,8 @@
           <label>A little bit about yourself:</label>
           <input type="text" class="form-control" name="artist-bio">
       </div>
-      <form class='genreChoices'>
-          <label>Genre</label>
+      <section class='genreChoices'>
+          <h3>Genre</h3>
           <input type="checkbox" name="genre" value="Rock"> Rock<br>
           <input type="checkbox" name="genre" value="IndieRock"> Indie<br>
           <input type="checkbox" name="genre" value="Alternative"> Alternative<br>
@@ -39,9 +39,9 @@
           <input type="checkbox" name="genre" value="Metal"> Metal<br>
           <input type="checkbox" name="genre" value="Psychadelic"> Psychadelic<br>
           <input type="checkbox" name="genre" value="Experimental"> Experimental<br>
-          <input type="checkbox" name="genre" value="Electronic"> Electronic 
-      </form>
-      <button type="submit" class="btn btn-warning btn-lg">Save</button>
+          <input type="checkbox" name="genre" value="Electronic"> Electronic
+      </section>
+      <button type="submit" class="save-button hidden">Save</button>
     </div>
 
 
@@ -56,18 +56,18 @@
           <label>A little bit about your band</label>
           <input type="text" class="form-control" name="band-bio">
       </div>
-      <form class='genreChoices'>
-          <label>Genre</label>
-          <input type="checkbox" name="genre" value="Rock"> Rock<br>
-          <input type="checkbox" name="genre" value="IndieRock"> Indie<br>
-          <input type="checkbox" name="genre" value="Alternative"> Alternative<br>
-          <input type="checkbox" name="genre" value="Hip-hop"> Hip-hop<br>
-          <input type="checkbox" name="genre" value="Metal"> Metal<br>
-          <input type="checkbox" name="genre" value="Psychadelic"> Psychadelic<br>
-          <input type="checkbox" name="genre" value="Experimental"> Experimental<br>
-          <input type="checkbox" name="genre" value="Electronic"> Electronic>
-      </form>
-      <button type="submit" class="btn btn-warning btn-lg">Save</button>
+      <section class='genreChoicesSection'>
+          <h3>Genre</h3>
+          <input class='genreChoices' type="checkbox" name="genre" value="Rock"> Rock<br>
+          <input class='genreChoices' type="checkbox" name="genre" value="IndieRock"> Indie<br>
+          <input class='genreChoices' type="checkbox" name="genre" value="Alternative"> Alternative<br>
+          <input class='genreChoices' type="checkbox" name="genre" value="Hip-hop"> Hip-hop<br>
+          <input class='genreChoices' type="checkbox" name="genre" value="Metal"> Metal<br>
+          <input class='genreChoices' type="checkbox" name="genre" value="Psychadelic"> Psychadelic<br>
+          <input class='genreChoices' type="checkbox" name="genre" value="Experimental"> Experimental<br>
+          <input class='genreChoices' type="checkbox" name="genre" value="Electronic"> Electronic
+      </section>
+      <button type="submit" class="save-button hidden">Save</button>
     </div>
 
 
@@ -82,12 +82,28 @@
   $('.band-seeking').click (function(e) {
     e.preventDefault();
     $('.band-info').removeClass('hidden');
+    $('.save-button').removeClass('hidden');
   });
 
   $('.artist-seeking').click (function(e) {
     e.preventDefault();
     $('.artist-info').removeClass('hidden');
+    $('.save-button').removeClass('hidden');
   });
+
+  $('.save-button').click (function(e) {
+            let genres = [];
+            $.each($("input[name='genre']:checked"), function(){
+                genres.push($(this).val());
+                console.log(genres);
+                $.post('',
+                {
+                  genres : genres
+
+                })
+
+            });
+      });
 
 
  </script>
