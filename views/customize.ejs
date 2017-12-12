@@ -10,7 +10,11 @@
     </style>
 </head>
 <body>
-<div class="container">
+  <header>
+    <% include ../partials/header %>
+  </header>
+
+  <div class="container">
 
     <div class="page-header text-center">
         <h1><span class="fa fa-anchor"></span>Customize Your Profile</h1>
@@ -67,6 +71,8 @@
           <input class='genreChoices' type="checkbox" name="genre" value="Experimental"> Experimental<br>
           <input class='genreChoices' type="checkbox" name="genre" value="Electronic"> Electronic
       </section>
+
+      <input type='text' class= 'youtubeUrl' placeholder="Enter Your YouTube URL">
       <!--<button type="submit" class="save-button hidden">Save</button>-->
       <a href="/profile" class="save-button btn btn-default"><span class="fa fa-user"></span> Submit</a>
     </div>
@@ -96,14 +102,25 @@
     event.preventDefault();
       let bio = $('input[name="band-bio"]').val();
       let name = $('input[name="band-name"]').val();
-      console.log(bio);
+      let youtube = $('.youtubeUrl').val();
       console.log(name);
+      console.log(bio);
       let genres = [];
         $.each($("input[name='genre']:checked"), function(){
             genres.push($(this).val());
             console.log(genres);
 
 
+            });
+            $.post('',
+            {
+              name : name,
+              bio  :  bio,
+              genres : genres,
+              youtube : youtube
+            },
+            function(data, status){
+                console.log("Data: " + data + "\nStatus: " + status);
             });
       });
 

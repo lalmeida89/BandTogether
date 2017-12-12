@@ -8,10 +8,6 @@ module.exports = function(app, passport) {
         res.render('index.ejs');
     });
 
-    app.get('/customize', function(req, res) {
-        res.render('customize.ejs');
-    });
-
     // PROFILE SECTION =========================
     app.get('/profile', isLoggedIn, function(req, res) {
       User.find().exec().then(x => {
@@ -100,9 +96,21 @@ module.exports = function(app, passport) {
             failureFlash : true // allow flash messages
         }));
 
-        app.get('/customize', function(req, res) {
+        app.get('/customize', isLoggedIn, function(req, res) {
             res.render('customize.ejs', { message: req.flash('signupMessage') });
         });
+
+        app.post('/customize', isLoggedIn, function(req, res) {
+            console.log(req.user, req.body);
+            req.user.name = req.body.name;
+            req.user.bio  = req.body.bio;
+            req.user.genres = req.body.genres;
+            req.user.youtube = req.body.youtube;
+            req.user.save(function(err) {
+                res.redirect('/profile');
+                console.log(err);
+            });
+        })
 
     // facebook -------------------------------
 

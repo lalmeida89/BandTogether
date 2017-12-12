@@ -9,7 +9,13 @@
     </style>
 </head>
 <body>
+
+  <header>
+    <% include ../partials/header %>
+  </header>
+
 <div class="container">
+
 
     <div class="page-header text-center">
         <h1><span class="fa fa-anchor"></span> Profile Page</h1>
@@ -20,7 +26,7 @@
     <ul>
     <% for (var i = 0; i < all.length; i++) { %>
       <li data-id= '<%= all[i].id %>'>
-        <%= all[i].local.name %>
+
         <%= all[i].facebook.name %>
         <%= all[i].local.email %>
         <%= all[i].google.name %>
