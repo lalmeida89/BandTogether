@@ -17,8 +17,11 @@ var session      = require('express-session');
 
 var configDB = require('./config/database.js');
 
+
 // configuration ===============================================================
 mongoose.connect(configDB.url); // connect to our database
+
+
 
 require('./config/passport')(passport); // pass passport for configuration
 
@@ -46,5 +49,19 @@ console.log(path.join(__dirname, 'public'));
 require('./app/routes.js')(app, passport); // load our routes and pass in our app and fully configured passport
 
 // launch ======================================================================
-app.listen(port);
+//app.listen(port);
+
+var http = require('http').Server(app);
+var io = require('socket.io')(http);
+
+io.on('connection', function(socket){
+  console.log('raspberries');
+  socket.on('chat message', function(msg){
+    io.emit('chat message', msg);
+  });
+});
+
+http.listen(port, function(){
+  console.log('listening on *:' + port);
+});
 console.log('The magic happens on port ' + port);

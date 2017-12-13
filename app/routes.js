@@ -1,6 +1,6 @@
 module.exports = function(app, passport) {
   var User       = require('../app/models/user');
-
+  var Chat       = require('../app/models/chats');
 // normal routes ===============================================================
 
     // show the home page (will also have our login links)
@@ -9,54 +9,65 @@ module.exports = function(app, passport) {
     });
 
     // PROFILE SECTION =========================
-    app.get('/profile', isLoggedIn, function(req, res) {
+    app.get('/dashboard', isLoggedIn, function(req, res) {
       User.find().exec().then(x => {
 
         console.log(x, 'ginger')
+        res.render('dashboard.ejs', {
+            user : req.user,
+            all  : x
+        });
+      })
+    });
+    app.post('/dashboard', isLoggedIn, function(req, res) {
+      console.log(req.body);
+
+      //check for likes from another user
+      User.findOne({_id:req.body.id}).exec().then(them => {
+        if (them.likes.indexOf(req.user._id) != -1){
+          //match found
+          let chat = new Chat();
+          chat.users.push(req.user._id);
+          chat.users.push(them._id);
+          chat.save(function(err,room) {
+            console.log('created chat');
+            console.log(room);
+            //once we find a match, create match id
+            them.matches.push({userId:req.user._id, chatId: room._id});
+            req.user.matches.push({userId: req.body.id, chatId: room._id});
+            them.save();
+            //saves likes and dislikes to logged in user
+            req.user[req.body.value].push(req.body.id);
+            req.user.save();
+          });
+
+        } else {
+          //saves likes and dislikes to logged in user
+          req.user[req.body.value].push(req.body.id);
+          req.user.save();
+        };
+      });
+    });
+
+
+    app.get('/profile', isLoggedIn, function(req, res) {
+      User.find().exec().then(x => {
+
         res.render('profile.ejs', {
             user : req.user,
             all  : x
         });
       })
     });
-    app.post('/profile', isLoggedIn, function(req, res) {
-      console.log(req.body);
-      //console.log(req.user, req.user._id);
-      /*User.findOne({_id:req.user._id}).exec().then(me => {
-        console.log('me');
-        //me['likes'];
-        console.log(req.body.value);
-        me[req.body.value].push(req.body.id);
-        me.save();
-      })*/
 
+    app.get('/chat/:chatId', isLoggedIn, function(req, res) {
+      Chat.find().exec().then(x => {
 
-      //check for likes from another user
-      User.findOne({_id:req.body.id}).exec().then(them => {
-        if (them.likes.indexOf(req.user._id) != -1){
-          //once we find a match, create match id
-          them.matches.push({userId:req.user._id});
-          req.user.matches.push({userId: req.body.id});
-          them.save();
-        }
-        //saves likes and dislikes to logged in user
-        req.user[req.body.value].push(req.body.id);
-        req.user.save();
+        res.render('chat.ejs', {
+            user : req.user,
+            all  : x
+        });
       })
-
-    })
-
-
-    app.get('/band-profile', isLoggedIn, function(req, res) {
-      res.render('band-profile.ejs', {
-          user : req.user
-      });
-    });
-
-    app.get('/artist-profile', isLoggedIn, function(req, res) {
-      res.render('artist-profile.ejs', {
-          user : req.user
-      });
     });
 
     // LOGOUT ==============================
@@ -78,7 +89,7 @@ module.exports = function(app, passport) {
 
         // process the login form
         app.post('/login', passport.authenticate('local-login', {
-            successRedirect : '/profile', // redirect to the secure profile section
+            successRedirect : '/dashboard', // redirect to the secure profile section
             failureRedirect : '/login', // redirect back to the signup page if there is an error
             failureFlash : true // allow flash messages
         }));
@@ -107,9 +118,8 @@ module.exports = function(app, passport) {
             req.user.genres = req.body.genres;
             req.user.youtube = req.body.youtube;
             req.user.save(function(err) {
-                res.redirect('/profile');
-                console.log(err);
             });
+            res.end();
         })
 
     // facebook -------------------------------

@@ -11,30 +11,28 @@
 </head>
 <body>
   <header>
-    <% include ../partials/header %>
+    <% include partials/header %>
   </header>
 
   <div class="container">
 
     <div class="page-header text-center">
-        <h1><span class="fa fa-anchor"></span>Customize Your Profile</h1>
+        <h1>Customize Your Profile</h1>
     </div>
 
     <div class='music-selector'>
-      <button type='submit' class='artist-seeking'>Artist seeking Bandmates</input>
-      <button type='submit' class='band-seeking'>Band seeking Artist </input>
+      <button class='artist-seeking'>Artist seeking Bandmates</input>
+      <button class='band-seeking'>Band seeking Artist </input>
+    </div>
 
-    <div class="row artist-info hidden">
-      <!--artist info, bio, and images -->
-      <div class="form-group">
-          <label>Artist's Name</label>
-          <input type="text" class="form-control" name="artist-name">
-      </div>
-      <div class="form-group">
-          <label>A little bit about yourself:</label>
-          <input type="text" class="form-control" name="artist-bio">
-      </div>
-      <section class='genreChoices'>
+
+    <!--<form action="/customize" method = "post" class="row artist-info hidden">
+      <label for="artist-name">Artist Name</label>
+      <input type="text" name="artist-name" id="artist-name" placeholder="Name"/>
+      <label for="artist-bio">A little bit about yourself:</label>
+      <input type="text" name='artist-bio' id='artist-bio' placeholder="Describe your sound"/>
+
+      <fieldset class='genreChoices'>
           <h3>Genre</h3>
           <input type="checkbox" name="genre" value="Rock"> Rock<br>
           <input type="checkbox" name="genre" value="IndieRock"> Indie<br>
@@ -44,10 +42,9 @@
           <input type="checkbox" name="genre" value="Psychadelic"> Psychadelic<br>
           <input type="checkbox" name="genre" value="Experimental"> Experimental<br>
           <input type="checkbox" name="genre" value="Electronic"> Electronic
-      </section>
-      <button type="submit" class="save-button hidden">Save</button>
-    </div>
-
+      </fieldset>
+      <button class='save-button'>Save</button>
+  </form>-->
 
 
         <!-- band info, bio, and images. -->
@@ -74,7 +71,7 @@
 
       <input type='text' class= 'youtubeUrl' placeholder="Enter Your YouTube URL">
       <!--<button type="submit" class="save-button hidden">Save</button>-->
-      <a href="/profile" class="save-button btn btn-default"><span class="fa fa-user"></span> Submit</a>
+      <button class="save-button btn btn-default"> Submit</button>
     </div>
 
 
@@ -90,16 +87,18 @@
     e.preventDefault();
     $('.band-info').removeClass('hidden');
     $('.save-button').removeClass('hidden');
+    $('.artist-info').addClass('hidden');
   });
 
   $('.artist-seeking').click (function(e) {
     e.preventDefault();
     $('.artist-info').removeClass('hidden');
     $('.save-button').removeClass('hidden');
+    $('.band-info').addClass('hidden');
   });
 
   $('.save-button').click (function(e) {
-    event.preventDefault();
+    //event.preventDefault();
       let bio = $('input[name="band-bio"]').val();
       let name = $('input[name="band-name"]').val();
       let youtube = $('.youtubeUrl').val();
@@ -121,7 +120,9 @@
             },
             function(data, status){
                 console.log("Data: " + data + "\nStatus: " + status);
+                window.location.href='/profile';
             });
+
       });
 
 
