@@ -1,12 +1,124 @@
-<a href='/'>Home</a>
-<a href='/profile'>Profile</a>
-<a href='/signup'>Sign-up</a>
-<a href='/login'>Login</a>
-<a href='/dashboard'>Dashboard</a>
-<a href='/logout'>logout</a>
-<style>
-header       { text-align: center;}
-</style>
-<!--<div class="canva-embed" data-height-ratio="0.1236" data-design-id="DACpZhrxgOc" style="padding:12.36% 5px 5px 5px;background:rgba(0,0,0,0.03);border-radius:8px;">
+<div class='header-stuff'>
+  <img src="https://preview.ibb.co/c7r5um/BT.jpg" alt="BT" border="0" class='header-img'>
+  <nav class="navbar navbar-default" role="navigation">
+  <div class="container-fluid">
+
+    <div class="navbar-header">
+        <ul class="nav navbar-nav">
+          <a href='/'>Home</a>
+          <a href='/dashboard'>Dashboard</a>
+          <div class="dropdown">
+          <a onclick="myFunction()" class="box-shadow-menu dropbtn"></a>
+            <div id="myDropdown" class="dropdown-content">
+              <a href='/profile'>View Profile</a>
+              <a href='/customize'>Edit Profile</a>
+              <a href='/signup'>Sign-up</a>
+              <a href='/login'>Login</a>
+              <a href='/logout'>Logout</a>
+            </div>
+          </div>
+        </ul>
+    </div>
+
+  </div>
+  </nav>
 </div>
-<script async src="https://sdk.canva.com/v1/embed.js"></script>-->
+
+
+
+
+
+<script>
+/* When the user clicks on the button,
+toggle between hiding and showing the dropdown content */
+function myFunction() {
+    document.getElementById("myDropdown").classList.toggle("show");
+}
+
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+</script>
+
+<style>
+
+
+.header-img {
+  display: block;
+  width : 100%;
+  position: fixed;
+  top: 0;
+}
+/* navbar css*/
+a:hover {
+  cursor: pointer;
+}
+.nav a {
+  padding-left: 2vw;
+}
+
+ul > a {
+  text-decoration: none;
+}
+
+.nav {
+  position : fixed;
+  padding-top:1.5vw; padding-left:  2vw;
+}
+/*dropdown menu within the navbar*/
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown a:hover {background-color: #f1f1f1}
+
+.show {display:block;}
+
+/* turn the dropdown menu into the 3 lines */
+
+.box-shadow-menu {
+  position: inherit;
+  margin-left: 2vw;
+}
+.box-shadow-menu:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.25em;
+  width: 1em;
+  height: 0.15em;
+  background: black;
+  box-shadow:
+    0 0.25em 0 0 black,
+    0 0.5em 0 0 black;
+}
+</style>

@@ -4,6 +4,7 @@
     <title>Node Authentication</title>
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+    <link href="app.css" rel="stylesheet" type="text/css" />
     <style>
         body         { padding-top:80px; word-wrap:break-word; }
 
@@ -13,14 +14,13 @@
 
   <header>
     <% include partials/header %>
-    <a href='/customize'>Edit Profile</a>
   </header>
 
 <div class="container">
 
 
     <div class="page-header text-center">
-        <h1><span class="fa fa-anchor"></span> Profile Page</h1>
+        <h1>Your Profile</h1>
     </div>
 
       <strong>name</strong>: <%= user.name %><br>

@@ -4,8 +4,11 @@
     <title>Node Authentication</title>
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+    <link href="app.css" rel="stylesheet" type="text/css" />
     <style>
         body         { padding-top:80px; }
+        .home        { width : 95%; }
+        .fb-login   { text-align: center; }
     </style>
 </head>
 <body>
@@ -14,10 +17,10 @@
     <% include partials/header %>
   </header>
 
-  <div class="container">
+  <div class="container home">
     <div class="col-sm-6 col-sm-offset-3">
 
-    <h1><span class="fa fa-sign-in"></span> Login</h1>
+    <h1> Login</h1>
 
     <% if (message.length > 0) { %>
         <div class="alert alert-danger"><%= message %></div>
@@ -34,13 +37,18 @@
             <input type="password" class="form-control" name="password">
         </div>
 
-        <button type="submit" class="btn btn-warning btn-lg">Login</button>
+        <button type="submit" class="btn btn-warning btn-primary">Login</button>
+
     </form>
 
-    <hr>
 
-    <p>Need an account? <a href="/signup">Signup</a></p>
-    <p>Or go <a href="/">home</a>.</p>
+
+    <hr>
+  <div class='fb-login'>
+    <p>Login with Facebook</p>
+    <a href="/auth/facebook" class="btn btn-primary fb"><span class="fa fa-facebook"></span> Facebook</a>
+  </div>
+    <!--<p>Need an account? <a href="/signup">Signup</a></p>-->
 
 </div>
 </div>
