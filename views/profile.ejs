@@ -34,6 +34,7 @@
     <% for(var i=0; i<user.matches.length; i++) { %>
         <li>
             <a href='chat/<%= user.matches[i].chatId %>'>
+                <%= user.matches[i].userName %>
                 <%= user.matches[i].userId %>
             </a>
         </li>

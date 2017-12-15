@@ -33,8 +33,8 @@ module.exports = function(app, passport) {
             console.log('created chat');
             console.log(room);
             //once we find a match, create match id
-            them.matches.push({userId:req.user._id, chatId: room._id});
-            req.user.matches.push({userId: req.body.id, chatId: room._id});
+            them.matches.push({userId:req.user._id, chatId: room._id, userName: req.user.name});
+            req.user.matches.push({userId: req.body.id, chatId: room._id, userName: req.body.name});
             them.save();
             //saves likes and dislikes to logged in user
             req.user[req.body.value].push(req.body.id);
@@ -116,12 +116,22 @@ module.exports = function(app, passport) {
             req.user.name = req.body.name;
             req.user.bio  = req.body.bio;
             req.user.genres = req.body.genres;
-            req.user.youtube = req.body.youtube;
+            req.user.youtube = getId(req.body.youtube);
             req.user.seeking = req.body.seeking;
             req.user.save(function(err) {
             });
             res.end();
         })
+        function getId(url) {
+          var regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+          var match = url.match(regExp);
+
+          if (match && match[2].length == 11) {
+            return match[2];
+          } else {
+            return 'error';
+          }
+        }
 
     // facebook -------------------------------
 

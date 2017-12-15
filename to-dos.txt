@@ -23,4 +23,14 @@ chatrooms: {
 }
 
 create a customize page after first sign in. then check every time a user logs in if a customize page
-has been created. if yes, redirect to profile page. if not, redirect to customize page. 
+has been created. if yes, redirect to profile page. if not, redirect to customize page.
+
+get youtube video embedded
+      -add an *embed* to URL
+**possibly** swiping or other user transition
+whole lotta CSS
+saving chats
+socket.io dynamic rooms
+heroku deployment
+edit profile with preloaded data
+edit profile update user matches arrays

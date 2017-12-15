@@ -7,6 +7,10 @@
     <link href="app.css" rel="stylesheet" type="text/css" />
     <style>
         body         { padding-top:80px; word-wrap:break-word; }
+        li          { opacity : 0; transition : all .5s}
+        li.selected { opacity: 0;}
+        li.next     { opacity : 1;}
+        li:first-child {opacity : 1;}
     </style>
 </head>
 <body>
@@ -29,6 +33,11 @@
         <%= all[i].facebook.name %>
         <%= all[i].local.email %>
         <%= all[i].google.name %>
+        <strong>YouTube URL</strong>: <%= all[i].youtube %><br>
+        <strong>Band Name</strong>: <%= all[i].name %><br>
+        <%if (all[i].genres.length > 0) {%>
+          <strong>Genres</strong>: <%= all[i].genres %><br> <%}%>
+        <iframe width="560" height="315" src="//www.youtube.com/embed/<%= all[i].youtube %>" frameborder="0" allowfullscreen></iframe>'
         <button class='likeButton' value='likes'>Like</button>
         <button class='dislikeButton' value='dislikes'>Dislike</button>
       </li>
@@ -47,6 +56,8 @@
   $('button').click (function(e) {
     window.par = this;
     console.log($(this).parent().data('id'))
+    $(this).parent().addClass('selected')
+    $(this).parent().next().addClass('next')
     let id = $(this).parent().data('id');
     let value = this.value;
     $.post('',

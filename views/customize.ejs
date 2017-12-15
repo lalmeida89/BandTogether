@@ -50,7 +50,7 @@
   </form>-->
 
 
-        <!-- band info, bio, and images. -->
+    <form class='save-stuff'>    <!-- band info, bio, and images. -->
     <div class="row band-info hidden">
       <div class="form-group band-info">
           <label>Band name</label>
@@ -89,10 +89,11 @@
         <input class='skill' type="checkbox" name="skill" value=" DJ"> DJ
       </section>
 
-      <input type='text' class= 'youtubeUrl' placeholder="Enter Your YouTube URL">
+      <input type='text' class= 'youtubeUrl' placeholder="Enter Your YouTube URL" required>
       <!--<button type="submit" class="save-button hidden">Save</button>-->
-      <button class="save-button btn btn-default"> Submit</button>
+      <button type= 'submit' class="save-button btn btn-default"> Submit</button>
     </div>
+  </form>
 
 
 
@@ -117,7 +118,7 @@
     $('.band-info').addClass('hidden');
   });
 
-  $('.save-button').click (function(e) {
+  $('form.save-stuff').submit (function(e) {
     //event.preventDefault();
       let bio = $('input[name="band-bio"]').val();
       let name = $('input[name="band-name"]').val();
