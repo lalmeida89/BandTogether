@@ -117,6 +117,7 @@ module.exports = function(app, passport) {
             req.user.bio  = req.body.bio;
             req.user.genres = req.body.genres;
             req.user.youtube = req.body.youtube;
+            req.user.seeking = req.body.seeking;
             req.user.save(function(err) {
             });
             res.end();

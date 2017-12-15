@@ -12,6 +12,7 @@ var userSchema = mongoose.Schema({
           bio          : String,
           genres       : Array,
           youtube      : String,
+          seeking      : Array,
 
     local            : {
         email        : String,
