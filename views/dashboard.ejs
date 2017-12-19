@@ -7,13 +7,14 @@
     <link href="app.css" rel="stylesheet" type="text/css" />
     <style>
         body         { padding-top:80px; word-wrap:break-word; background-color: gray;}
-        li          { opacity : 0; transition : all .5s; list-style: none; text-align: left;}
+        li          { opacity : 0; transition : all .5s; list-style: none; text-align: left; display:none;}
         li.selected { opacity: 0; display: none;}
-        li.next     { opacity : 1;}
-        li:first-child {opacity : 1;}
-        .container { margin-top: 20em;}
-        .card     { margin-top: 3em;
-        }
+        li.next     { opacity : 1; display: block;}
+        /*li:first-child {opacity : 1; display: block;}*/
+        .container { margin-top: 20em; margin-bottom: 10em;}
+        .card     { margin-top: 3em;}
+        li.current { display: block; opacity: 1;}
+
 
     </style>
 </head>
@@ -27,7 +28,8 @@
 
     <ul>
     <% for (var i = 0; i < all.length; i++) { %>
-      <li data-id= '<%= all[i].id %>' class='card'>
+
+      <li data-id= '<%= all[i].id %>' class = "<%= i !== 0 ? 'card': 'card current' %>">
         <h2><%= all[i].name %><span><%= all[i].genres %></span><span>Looking for: <%=all[i].seeking %></span></h2>
         <!--<p>Email: <%= all[i].local.email %> </p>
 
@@ -39,8 +41,8 @@
         <strong>Genres</strong>: <%= all[i].genres %><br> <%}%>-->
         <p><%= all[i].bio %></p>
         <iframe width="560" height="315" src="//www.youtube.com/embed/<%= all[i].youtube %>" frameborder="0" allowfullscreen></iframe>
-        <button class='likeButton' value='likes'>Like</button>
-        <button class='dislikeButton' value='dislikes'>Dislike</button>
+        <button class='likeButton' value='likes'><i class="fa fa-thumbs-up"></i></button>
+        <button class='dislikeButton' value='dislikes'><i class="fa fa-thumbs-down"></i></button>
       </li>
       <% } %>
     </ul>
@@ -57,8 +59,11 @@
   $('button').click (function(e) {
     window.par = this;
     console.log($(this).parent().data('id'))
-    $(this).parent().addClass('selected')
-    $(this).parent().next().addClass('next')
+    //$(this).parent().addClass('selected')
+    $('.card').removeClass('current');
+    $(this).parent().next().addClass('current');
+    //$(this).parent().next().addClass('next')
+    //$(this).parent().prev().addClass('prev')
     let id = $(this).parent().data('id');
     let value = this.value;
     let name = this.name;

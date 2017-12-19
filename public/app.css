@@ -5,19 +5,21 @@
   position: relative;
   float: left;
   overflow: hidden;
-  margin-left: 2.5em;
-  margin-right: auto;
+  /*margin-left: 2.5em;
+  margin-right: auto;*/
+  margin: 0 auto 0 auto;
   min-width: 230px;
   width: 90%;
-  color: #ffffff;
+  color: #141414;
   text-align: left;
   line-height: 1.4em;
-  background-color: #141414;
+  background-color: white;
   border-radius: 15px;
   padding: 15px;
-
+  border: 1px solid #484848;
+  box-shadow:0 2px 6px;
 }
-.snip1336 * {
+/*.snip1336 * {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   -webkit-transition: all 0.25s ease;
@@ -68,7 +70,7 @@
   position: absolute;
   bottom: 100%;
   left: 25px;
-  /*z-index: 1;*/
+  /*z-index: 1;
   max-width: 90px;
   opacity: 1;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
@@ -82,7 +84,8 @@
   margin: 0 0 5px;
   font-weight: 300;
   text-align: left;
-}
+}*/
+
 li h2 span {
   display: block;
   font-size: 0.5em;
@@ -97,13 +100,14 @@ li p {
 }
 /* Demo purposes only */
 body {
-  background-color: #212121;
+  /*background-color: #212121;*/
+  background-image: url('https://avante.biz/wp-content/uploads/Band-Backgrounds/Band-Backgrounds-001.jpg');
 }
 iframe {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  border: 1px dashed green;
+  /*border: 1px dashed green;*/
 }
 button {
   border-radius: 4px;
@@ -117,4 +121,10 @@ button {
 .likeButton {
   position: absolute;
   right: 1em;
+}
+
+.fa {
+  font-size: 2em;
+  padding: .5em 1em;
+
 }
