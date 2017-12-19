@@ -1,16 +1,20 @@
 <!doctype html>
 <html>
 <head>
-    <title>Node Authentication</title>
+    <title>Band Together</title>
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
     <link href="app.css" rel="stylesheet" type="text/css" />
     <style>
-        body         { padding-top:80px; word-wrap:break-word; }
-        li          { opacity : 0; transition : all .5s}
-        li.selected { opacity: 0;}
+        body         { padding-top:80px; word-wrap:break-word; background-color: gray;}
+        li          { opacity : 0; transition : all .5s; list-style: none; text-align: left;}
+        li.selected { opacity: 0; display: none;}
         li.next     { opacity : 1;}
         li:first-child {opacity : 1;}
+        .container { margin-top: 20em;}
+        .card     { margin-top: 3em;
+        }
+
     </style>
 </head>
 <body>
@@ -21,23 +25,20 @@
 
 <div class="container">
 
-
-    <div class="page-header text-center">
-        <h1> Dashboard </h1>
-    </div>
-
     <ul>
     <% for (var i = 0; i < all.length; i++) { %>
-      <li data-id= '<%= all[i].id %>'>
+      <li data-id= '<%= all[i].id %>' class='card'>
+        <h2><%= all[i].name %><span><%= all[i].genres %></span><span>Looking for: <%=all[i].seeking %></span></h2>
+        <!--<p>Email: <%= all[i].local.email %> </p>
 
         <%= all[i].facebook.name %>
-        <%= all[i].local.email %>
-        <%= all[i].google.name %>
-        <strong>YouTube URL</strong>: <%= all[i].youtube %><br>
-        <strong>Band Name</strong>: <%= all[i].name %><br>
+        <%= all[i].google.name %>-->
+        <!--<strong>YouTube URL</strong>: <%= all[i].youtube %><br>
+
         <%if (all[i].genres.length > 0) {%>
-          <strong>Genres</strong>: <%= all[i].genres %><br> <%}%>
-        <iframe width="560" height="315" src="//www.youtube.com/embed/<%= all[i].youtube %>" frameborder="0" allowfullscreen></iframe>'
+        <strong>Genres</strong>: <%= all[i].genres %><br> <%}%>-->
+        <p><%= all[i].bio %></p>
+        <iframe width="560" height="315" src="//www.youtube.com/embed/<%= all[i].youtube %>" frameborder="0" allowfullscreen></iframe>
         <button class='likeButton' value='likes'>Like</button>
         <button class='dislikeButton' value='dislikes'>Dislike</button>
       </li>
@@ -60,10 +61,12 @@
     $(this).parent().next().addClass('next')
     let id = $(this).parent().data('id');
     let value = this.value;
+    let name = this.name;
     $.post('',
     {
         id    : id,
-        value : value
+        value : value,
+        name  : name
     },
     function(data, status){
         console.log("Data: " + data + "\nStatus: " + status);

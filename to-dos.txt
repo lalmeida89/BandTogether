@@ -26,7 +26,8 @@ create a customize page after first sign in. then check every time a user logs i
 has been created. if yes, redirect to profile page. if not, redirect to customize page.
 
 get youtube video embedded
-      -add an *embed* to URL
+      -add an *embed* to URL - done
+      -youtube url validation
 **possibly** swiping or other user transition
 whole lotta CSS
 saving chats

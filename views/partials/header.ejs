@@ -5,12 +5,12 @@
 
     <div class="navbar-header">
         <ul class="nav navbar-nav">
-          <a href='/'>Home</a>
-          <a href='/dashboard'>Dashboard</a>
+          <a href='/' class='nav-fixed'>Home</a>
+          <a href='/dashboard' class='nav-fixed'>Dashboard</a>
+          <a href='/profile' class='nav-fixed'>Profile</a>
           <div class="dropdown">
-          <a onclick="myFunction()" class="box-shadow-menu dropbtn"></a>
+          <a onclick="myFunction()" class="box-shadow-menu dropbtn nav-fixed">More</a>
             <div id="myDropdown" class="dropdown-content">
-              <a href='/profile'>View Profile</a>
               <a href='/customize'>Edit Profile</a>
               <a href='/signup'>Sign-up</a>
               <a href='/login'>Login</a>
@@ -57,22 +57,30 @@ window.onclick = function(event) {
 .header-img {
   display: block;
   width : 100%;
-  position: fixed;
-  top: 0;
+  max-height: 135px;
 }
 /* navbar css*/
 a:hover {
   cursor: pointer;
 }
-nav a {
-  padding-left: 2vw;
+.nav-fixed {
+  padding: 2vw;
+  margin-left: 2vw;
 }
 
 ul > a {
   text-decoration: none;
 }
 
-nav {
+.nav {
+  padding-top: 1.5vw;
+}
+
+.container {
+  margin-top: 5em;
+}
+
+/*nav {
   position : absolute;
   padding-top:1.5vw; padding-left:  2vw;
 }
@@ -89,7 +97,7 @@ nav {
     min-width: 160px;
     overflow: auto;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 2;
+    z-index: 3;
 }
 
 .dropdown-content a {
@@ -105,7 +113,7 @@ nav {
 
 /* turn the dropdown menu into the 3 lines */
 
-.box-shadow-menu {
+/*.box-shadow-menu {
   position: inherit;
   margin-left: 2vw;
 }
@@ -120,5 +128,11 @@ nav {
   box-shadow:
     0 0.25em 0 0 black,
     0 0.5em 0 0 black;
+}*/
+
+.header-stuff {
+  position:fixed;
+  top: 0;
+  width: 100%;
 }
 </style>

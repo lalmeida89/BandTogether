@@ -21,6 +21,8 @@ module.exports = function(app, passport) {
     });
     app.post('/dashboard', isLoggedIn, function(req, res) {
       console.log(req.body);
+      console.log('pumps', req.body.name);
+      console.log('dumps', req.user.name);
 
       //check for likes from another user
       User.findOne({_id:req.body.id}).exec().then(them => {
@@ -30,12 +32,14 @@ module.exports = function(app, passport) {
           chat.users.push(req.user._id);
           chat.users.push(them._id);
           chat.save(function(err,room) {
+            console.log(req.user);
             console.log('created chat');
             console.log(room);
             //once we find a match, create match id
             them.matches.push({userId:req.user._id, chatId: room._id, userName: req.user.name});
             req.user.matches.push({userId: req.body.id, chatId: room._id, userName: req.body.name});
             them.save();
+
             //saves likes and dislikes to logged in user
             req.user[req.body.value].push(req.body.id);
             req.user.save();
