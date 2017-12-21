@@ -7,10 +7,14 @@
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <link href="index-app.css" rel="stylesheet" type="text/css" />
     <link href="fade-in.css" rel="stylesheet" type="text/css" />
+    <% include partials/head %>
     <style>
-        body         { padding-top:80px;  animation: backgroundScroll 20s linear infinite; }
+        body         { padding-top:80px;  animation: backgroundScroll 10s linear ; }
         @keyframes backgroundScroll { from {background-position: 0 0;} to {background-position: -400px 0;} }
         @import url(https://fonts.googleapis.com/css?family=Roboto:300,400,600);
+        .intro       {  width: 350px; border-radius: 4px;}
+        .intro-header      { color: #999; font-size: 20px; margin-bottom: 20px;}
+        .form-control      { width: 250px;}
     </style>
 
 </head>
@@ -23,12 +27,27 @@
     <img src='https://preview.ibb.co/dp7uem/25624726_10155201819628589_1823281897_o.jpg' border="0">
   </div>-->
 
-    <div class="card ">
+    <div class="card intro">
 
-        <h3>Start jamming with others near you</h3>
+        <h3 class='intro-header'>Sign up to start a band, join one, or just jam with people nearby</h3>
+        <div class='fb-login'>
+          <a href="/auth/facebook" class="fb-button"><span class="fa fa-facebook"></span>  Log in with Facebook</a>
+        </div>
+        <div class='divider one'></div>
+        <div class='divider-or'>OR</div>
+        <div class='divider two'></div>
 
-        <a href="/login" class="btn btn-default">Login</a>
-        <a href="/signup" class="btn btn-default"> Signup</a>
+        <form class='signup-form' action="/" method="post">
+            <div class="form-group">
+                <input type="email" class="form-control" name="email" placeholder="E-mail">
+            </div>
+            <div class="form-group">
+                <input type="password" class="form-control" name="password" placeholder="password">
+            </div>
+            <!--<a href="/customize" type='submit' class="signup-button"> Signup</a>-->
+            <button type="submit" class="signup-button">Sign-up</button>
+            <p class='footer'>Have an Account? <a href="/login">Login</a></p>
+          </form>
 
 
         <!--<a href="/auth/twitter" class="btn btn-info"><span class="fa fa-twitter"></span> Twitter</a>

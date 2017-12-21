@@ -1,138 +1,62 @@
-<div class='header-stuff'>
-  <img src="https://preview.ibb.co/c7r5um/BT.jpg" alt="BT" border="0" class='header-img'>
-  <nav class="navbar navbar-default" role="navigation">
-  <div class="container-fluid">
-
-    <div class="navbar-header">
-        <ul class="nav navbar-nav">
-          <a href='/' class='nav-fixed'>Home</a>
-          <a href='/dashboard' class='nav-fixed'>Dashboard</a>
-          <a href='/profile' class='nav-fixed'>Profile</a>
-          <div class="dropdown">
-          <a onclick="myFunction()" class="box-shadow-menu dropbtn nav-fixed">More</a>
-            <div id="myDropdown" class="dropdown-content">
-              <a href='/customize'>Edit Profile</a>
-              <a href='/signup'>Sign-up</a>
-              <a href='/login'>Login</a>
-              <a href='/logout'>Logout</a>
-            </div>
-          </div>
-        </ul>
+    <div class='header-stuff'>
+      <nav class='navbar' role='navigation'>
+        <a href='/profile' class='nav-fixed-left'><i class="fa fa-user" aria-hidden="true"></i></a>
+        <a href='/'><h1 class='main-header'>BAND TOGETHER</h1></a>
+        <a href='#' class='nav-fixed-right'><i class="fa fa-comments-o" aria-hidden="true"></i></a>
+      </nav>
     </div>
-
-  </div>
-  </nav>
-</div>
-
-
-
-
-
-<script>
-/* When the user clicks on the button,
-toggle between hiding and showing the dropdown content */
-function myFunction() {
-    document.getElementById("myDropdown").classList.toggle("show");
-}
-
-// Close the dropdown if the user clicks outside of it
-window.onclick = function(event) {
-  if (!event.target.matches('.dropbtn')) {
-
-    var dropdowns = document.getElementsByClassName("dropdown-content");
-    var i;
-    for (i = 0; i < dropdowns.length; i++) {
-      var openDropdown = dropdowns[i];
-      if (openDropdown.classList.contains('show')) {
-        openDropdown.classList.remove('show');
-      }
-    }
-  }
-}
-</script>
 
 <style>
 
-
-.header-img {
-  display: block;
-  width : 100%;
-  max-height: 135px;
+.main-header {
+  font-family: 'Amatic SC';
+  margin: auto;
+  position: relative;
+  margin-top: 7px;
+  color: black;
 }
-/* navbar css*/
+
+.nav-fixed-left {
+  float: left;
+}
+
+.nav-fixed-right {
+  float: right;
+}
+
 a:hover {
   cursor: pointer;
-}
-.nav-fixed {
-  padding: 2vw;
-  margin-left: 2vw;
-}
-
-ul > a {
-  text-decoration: none;
-}
-
-.nav {
-  padding-top: 1.5vw;
 }
 
 .container {
   margin-top: 5em;
 }
 
-/*nav {
-  position : absolute;
-  padding-top:1.5vw; padding-left:  2vw;
-}
-/*dropdown menu within the navbar*/
-.dropdown {
-    position: relative;
-    display: inline-block;
-}
-
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f9f9f9;
-    min-width: 160px;
-    overflow: auto;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 3;
-}
-
-.dropdown-content a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-}
-
-.dropdown a:hover {background-color: #f1f1f1}
-
-.show {display:block;}
-
-/* turn the dropdown menu into the 3 lines */
-
-/*.box-shadow-menu {
-  position: inherit;
-  margin-left: 2vw;
-}
-.box-shadow-menu:before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0.25em;
-  width: 1em;
-  height: 0.15em;
-  background: black;
-  box-shadow:
-    0 0.25em 0 0 black,
-    0 0.5em 0 0 black;
-}*/
-
 .header-stuff {
+  display: inline-block;
   position: absolute;
   top: 0;
   width: 100%;
 }
+
+.navbar {
+  background-color: white;
+  width: 100%;
+  display: inline-block;
+  text-align: center;
+}
+
+.navbar a, .navbar h1 {
+  display: inline-block;
+  text-decoration: none;
+}
+
+.navbar i {
+  color: black;
+  margin-top: 9px;
+  margin-left: 15px;
+  margin-right: 15px;
+  font-size: 20px;
+}
+
 </style>

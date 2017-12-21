@@ -3,10 +3,7 @@ module.exports = function(app, passport) {
   var Chat       = require('../app/models/chats');
 // normal routes ===============================================================
 
-    // show the home page (will also have our login links)
-    app.get('/', function(req, res) {
-        res.render('index.ejs');
-    });
+
 
     // PROFILE SECTION =========================
     app.get('/dashboard', isLoggedIn, function(req, res) {
@@ -112,16 +109,29 @@ module.exports = function(app, passport) {
         }));
 
         // SIGNUP =================================
+
+        // show the home page (will also have our login links)
+        //app.get('/signup', function(req, res) {
+          //  res.render('customize.ejs');
+        //});
+
+
         // show the signup form
-        app.get('/signup', function(req, res) {
-            res.render('signup.ejs', { message: req.flash('signupMessage') });
+        app.get('/', function(req, res) {
+            res.render('index.ejs', { message: req.flash('signupMessage') });
         });
 
         // process the signup form
-        app.post('/signup', passport.authenticate('local-signup', {
-            successRedirect : '/customize', // redirect to the secure profile section
-            failureRedirect : '/signup', // redirect back to the signup page if there is an error
+        app.post('/', passport.authenticate('local-signup', {
+            successRedirect : '/customize', // redirect to the edit profile section
+            failureRedirect : '/', // redirect back to the signup page if there is an error
             failureFlash : true // allow flash messages
+        }));
+
+        app.post('/signup', passport.authenticate('local-signup', {
+          successRedirect : '/customize', // redirect to the edit profile section
+          failureRedirect : '/', // redirect back to the signup page if there is an error
+          failureFlash : true // allow flash messages
         }));
 
         app.get('/customize', isLoggedIn, function(req, res) {
