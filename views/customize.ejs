@@ -4,12 +4,15 @@
     <title>Band Together</title>
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
-
+    <link href="index-app.css" rel="stylesheet" type="text/css" />
     <style>
         body         { padding-top:80px; word-wrap:break-word; }
         .hidden       { display:none; }
         .music-selector { text-align: center; }
         .choice-btn      { margin-left: 2vw;}
+        .bio            { height: 15vw;}
+        .save-button    { margin-top: 3vw; }
+
     </style>
 </head>
 <body>
@@ -17,19 +20,19 @@
     <% include partials/header %>
   </header>
 
-  <div class="container">
+  <div class="card">
 
     <div class="page-header text-center">
-        <h1>Customize Your Profile</h1>
+        <h1>Edit Your Profile</h1>
     </div>
 
-    <div class='music-selector'>
+    <!--<div class='music-selector'>
       <button class='artist-seeking choice-btn'>Artist seeking Band</input>
       <button class='band-seeking choice-btn'>Band seeking Artist </input>
     </div>
 
 
-    <!--<form action="/customize" method = "post" class="row artist-info hidden">
+    <form action="/customize" method = "post" class="row artist-info hidden">
       <label for="artist-name">Artist Name</label>
       <input type="text" name="artist-name" id="artist-name" placeholder="Name"/>
       <label for="artist-bio">A little bit about yourself:</label>
@@ -51,14 +54,14 @@
 
 
     <form class='save-stuff'>    <!-- band info, bio, and images. -->
-    <div class="row band-info hidden">
+    <div class="row band-info">
       <div class="form-group band-info">
-          <label>Band name</label>
-          <input type="text" class="form-control" name="band-name">
+          <label>Stage Name</label>
+          <input type="text" class="form-control" name="band-name"/>
       </div>
       <div class="form-group">
           <label>A little bit about your band</label>
-          <input type="text" class="form-control" name="band-bio">
+          <textarea type="text" class="form-control bio" name="band-bio"></textarea>
       </div>
       <section class='genreChoicesSection'>
           <h3>Genre</h3>
@@ -88,8 +91,10 @@
         <input class='skill' type="checkbox" name="skill" value=" Pianist"> Piano<br>
         <input class='skill' type="checkbox" name="skill" value=" DJ"> DJ
       </section>
-
-      <input type='text' class= 'youtubeUrl' placeholder="Enter Your YouTube URL" required>
+      <div class='youtubeSubmit'>
+        <h3> Submit a video of yourself </h3>
+        <input type='text' class= 'youtubeUrl' placeholder="Enter Your YouTube URL" >
+      </div>
       <!--<button type="submit" class="save-button hidden">Save</button>-->
       <button type= 'submit' class="save-button btn btn-default"> Submit</button>
     </div>
@@ -120,7 +125,7 @@
 
   $('form.save-stuff').submit (function(e) {
     //event.preventDefault();
-      let bio = $('input[name="band-bio"]').val();
+      let bio = $('textarea[name="band-bio"]').val();
       let name = $('input[name="band-name"]').val();
       let youtube = $('.youtubeUrl').val();
       console.log(name);

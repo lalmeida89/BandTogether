@@ -1,0 +1,39 @@
+.card {
+  animation: fadein 10s;
+ -moz-animation: fadein 10s; /* Firefox */
+ -webkit-animation: fadein 10s; /* Safari and Chrome */
+ -o-animation: fadein 10s; /* Opera */
+}
+
+@keyframes fadein {
+ from {
+     opacity:0;
+ }
+ to {
+     opacity:.7;
+ }
+}
+@-moz-keyframes fadein { /* Firefox */
+ from {
+     opacity:0;
+ }
+ to {
+     opacity:.7;
+ }
+}
+@-webkit-keyframes fadein { /* Safari and Chrome */
+ from {
+     opacity:0;
+ }
+ to {
+     opacity:1;
+ }
+}
+@-o-keyframes fadein { /* Opera */
+ from {
+     opacity:0;
+ }
+ to {
+     opacity: 1;
+ }
+}

@@ -65,13 +65,26 @@ module.exports = function(app, passport) {
     });
 
     app.get('/chat/:chatId', isLoggedIn, function(req, res) {
-      Chat.find().exec().then(x => {
-
+      Chat.findOne({_id:req.params.chatId}, function(err, x) {
+        console.log(err, x);
+        console.log('nut muffins');
         res.render('chat.ejs', {
-            user : req.user,
-            all  : x
+            user : req.user
+            //chats  : x.chats
         });
-      })
+      });
+    });
+
+    app.post('/chat/:chatId', isLoggedIn, function(req, res) {
+      console.log('save-post');
+      console.log(req.body);
+      console.log(req.params);
+      Chat.update(
+        { _id: req.params.chatId },
+        { $push: { chats: req.body.chat} },
+        function(res) {
+          console.log('pineapple', res);
+        });
     });
 
     // LOGOUT ==============================

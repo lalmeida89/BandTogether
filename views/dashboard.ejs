@@ -56,6 +56,11 @@
 
 <script>
 
+  $('iframe').click(function(e){
+    $('body').toggleClass('jump');
+    console.log('hi')
+  })
+
   $('button').click (function(e) {
     window.par = this;
     console.log($(this).parent().data('id'))

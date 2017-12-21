@@ -1,0 +1,45 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-image: url('https://i2.wp.com/audiomatrixinc.com/wp-content/uploads/2014/10/Music.jpg?fit=1500%2C666');
+
+}
+
+
+.card {
+  font-family: 'Roboto', Arial, sans-serif;
+  position: relative;
+  /*margin-left: 2.5em;
+  margin-right: auto;*/
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 15vw;
+  min-width: 230px;
+  width: 65%;
+  color: #141414;
+  text-align: center;
+  line-height: 1.4em;
+  background-color: white;
+  border-radius: 15px;
+  padding: 15px;
+  border: 1px solid #484848;
+  box-shadow:0 2px 6px;
+  opacity: .7;
+}
+
+.form-control {
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.genreChoicesSection, .bandLookingFor, .youtubeSubmit {
+  text-align: left;
+  margin-left: 10vw;
+}
+
+.youtubeUrl {
+  width: 80%;
+}

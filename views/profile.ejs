@@ -4,10 +4,12 @@
     <title>Node Authentication</title>
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
-    
+    <link href="app.css" rel="stylesheet" type="text/css" />
     <style>
         body         { padding-top:80px; word-wrap:break-word; }
-
+        .container { margin-top: 20em; margin-bottom: 10em; }
+        .card     { margin-top: 3em;}
+        li        {display: block;}
     </style>
 </head>
 <body>
@@ -16,7 +18,26 @@
     <% include partials/header %>
   </header>
 
-<div class="container">
+  <div class='container'>
+
+        <li class='card'>
+          <h2><%= user.name %><span><%= user.genres %></span><span>Looking for: <%=user.seeking %></span></h2>
+          <p><%= user.bio %></p>
+          <iframe width="560" height="315" src="//www.youtube.com/embed/<%= user.youtube %>" frameborder="0" allowfullscreen></iframe>
+          <ul>
+          <% for(var i=0; i<user.matches.length; i++) { %>
+              <li>
+                  <a href='chat/<%= user.matches[i].chatId %>'>
+                      <%= user.matches[i].userName %>
+                      <%= user.matches[i].userId %>
+                      <%= user.matches[i].email %>
+                  </a>
+              </li>
+          <% } %>
+        </ul>
+        </li>
+  </div>
+<!--<div class="container">
 
 
     <div class="page-header text-center">
@@ -42,7 +63,7 @@
     <% } %>
   </ul>
 
-</div>
+</div>-->
 
 <script
   src="https://code.jquery.com/jquery-3.2.1.js"

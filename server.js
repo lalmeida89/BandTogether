@@ -56,9 +56,15 @@ var io = require('socket.io')(http);
 
 io.on('connection', function(socket){
   console.log('raspberries');
-  socket.on('chat message', function(msg){
-    io.emit('chat message', msg);
+  socket.on('chat message', function(msg, room){
+    console.log(room);
+    //io.emit('chat message', msg);
+    io.sockets.in(room).emit('chat message', msg);
   });
+  socket.on('room', function(room) {
+    console.log(room);
+        socket.join(room);
+    });
 });
 
 http.listen(port, function(){
