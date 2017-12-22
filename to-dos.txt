@@ -40,3 +40,4 @@ social auths set up
 make dashboard not repeat profiles that youve already liked or disliked
 make dashboard not show own profile
 make matches show name or email not id
+info not showing up on phones from customize -> profile
