@@ -15,15 +15,20 @@
 <body>
 
   <header>
-    <% include partials/header %>
+    <% include partials/profile-header %>
   </header>
 
 
         <li class='card'>
+          <i class="fa fa-cog" aria-hidden="true"></i>
+          <div class='dropdown-content' id='myDropdown'>
+            <a href='/customize'>Edit Profile</a>
+            <a href='/logout'>Log out</a>
+          </div>
           <h2 class='profile-intro'><%= user.name %><span><%= user.genres %></span><span>Looking for: <%=user.seeking %></span></h2>
           <p class='profile-bio'><%= user.bio %></p>
           <h2 class="audition-header"> My Audition </h2>
-          <iframe width="250" height="125" src="//www.youtube.com/embed/<%= user.youtube %>" frameborder="0" allowfullscreen></iframe>
+          <iframe width="286" height="200" src="//www.youtube.com/embed/<%= user.youtube %>" frameborder="0" allowfullscreen></iframe>
           <ul>
           <% for(var i=0; i<user.matches.length; i++) { %>
             <!--  <li>
@@ -67,10 +72,14 @@
 <script
   src="https://code.jquery.com/jquery-3.2.1.js"
   integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
-  crossorigin="anonymous"></script>
+  crossorigin="anonymous">
+
+</script>
 
 <script>
-  $('button').click (function(e) {
+
+
+/*  $('button').click (function(e) {
     window.par = this;
     console.log($(this).parent().data('id'))
     let id = $(this).parent().data('id');
@@ -84,8 +93,25 @@
         console.log("Data: " + data + "\nStatus: " + status);
     });
 });
+*/
+$('.fa-cog').click(function(e){
+  $('#myDropdown').toggle('.show');
+});
 
 
+window.onclick = function(event) {
+  if (!event.target.matches('.fa-cog')) {
+
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
 
 
  </script>

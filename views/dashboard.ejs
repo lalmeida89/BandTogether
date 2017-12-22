@@ -7,14 +7,13 @@
     <link href="app.css" rel="stylesheet" type="text/css" />
     <% include partials/head %>
     <style>
-        body         { padding-top:80px; word-wrap:break-word; background-color: gray;}
-        li          { opacity : 0; transition : all .5s; list-style: none; text-align: left; display:none;}
+        body         { padding-top:80px; word-wrap:break-word;}
+        li          { opacity : 0; transition : all 1.s; list-style: none; text-align: left; display:none;}
         li.selected { opacity: 0; display: none;}
         li.next     { opacity : 1; display: block;}
         /*li:first-child {opacity : 1; display: block;}*/
-        .container { margin-top: 15em; margin-bottom: 10em;}
-        .card     { margin-top: 3em;}
-        li.current { display: block; opacity: 1;}
+        li.current { display: block; opacity: 1; margin: auto;}
+
 
 
     </style>
@@ -25,29 +24,25 @@
     <% include partials/header %>
   </header>
 
-<div class="container">
-
-    <ul>
     <% for (var i = 0; i < all.length; i++) { %>
+        <li data-id= '<%= all[i].id %>' class = "<%= i !== 0 ? 'card': 'card current' %>">
+          <h2 class='profile-intro'><%= all[i].name %><span><%= all[i].genres %></span><span>Looking for: <%=all[i].seeking %></span></h2>
+          <!--<p>Email: <%= all[i].local.email %> </p>
 
-      <li data-id= '<%= all[i].id %>' class = "<%= i !== 0 ? 'card': 'card current' %>">
-        <h2><%= all[i].name %><span><%= all[i].genres %></span><span>Looking for: <%=all[i].seeking %></span></h2>
-        <!--<p>Email: <%= all[i].local.email %> </p>
+          <%= all[i].facebook.name %>
+          <%= all[i].google.name %>-->
+          <!--<strong>YouTube URL</strong>: <%= all[i].youtube %><br>
 
-        <%= all[i].facebook.name %>
-        <%= all[i].google.name %>-->
-        <!--<strong>YouTube URL</strong>: <%= all[i].youtube %><br>
-
-        <%if (all[i].genres.length > 0) {%>
-        <strong>Genres</strong>: <%= all[i].genres %><br> <%}%>-->
-        <p><%= all[i].bio %></p>
-        <iframe width="560" height="315" src="//www.youtube.com/embed/<%= all[i].youtube %>" frameborder="0" allowfullscreen></iframe>
-        <button class='likeButton' value='likes'><i class="fa fa-thumbs-up"></i></button>
-        <button class='dislikeButton' value='dislikes'><i class="fa fa-thumbs-down"></i></button>
-      </li>
+          <%if (all[i].genres.length > 0) {%>
+          <strong>Genres</strong>: <%= all[i].genres %><br> <%}%>-->
+          <p class='profile-bio'><%= all[i].bio %></p>
+          <h2 class="audition-header"> My Audition </h2>
+          <iframe width="286" height="200" src="//www.youtube.com/embed/<%= all[i].youtube %>" frameborder="0" allowfullscreen></iframe>
+          <button class='likeButton lk-btn' value='likes'><i class="fa fa-thumbs-up"></i></button>
+          <button class='dislikeButton lk-btn' value='dislikes'><i class="fa fa-thumbs-down"></i></button>
+        </li>
       <% } %>
-    </ul>
-</div>
+
 </body>
 
 <script
@@ -57,12 +52,7 @@
 
 <script>
 
-  $('iframe').click(function(e){
-    $('body').toggleClass('jump');
-    console.log('hi')
-  })
-
-  $('button').click (function(e) {
+  $('.lk-btn').click (function(e) {
     window.par = this;
     console.log($(this).parent().data('id'))
     //$(this).parent().addClass('selected')

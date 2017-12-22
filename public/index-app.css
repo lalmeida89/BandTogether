@@ -26,9 +26,6 @@ body {
   border: 1px solid #484848;
   box-shadow:0 2px 6px;
   opacity: .95;
-}
-
-.intro       {
   width: 350px;
   border-radius: 4px;
 }
