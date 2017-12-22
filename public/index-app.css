@@ -14,7 +14,6 @@ body {
   margin-right: auto;*/
   margin-left: auto;
   margin-right: auto;
-  margin-top: 11vw;
   margin-bottom: 75px;
   min-width: 230px;
   width: 65%;
@@ -29,22 +28,40 @@ body {
   opacity: .95;
 }
 
+.intro       {
+  width: 350px;
+  border-radius: 4px;
+}
+
+.intro-header {
+  color: #999;
+  font-family: 'Amatic SC';
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
 .form-control {
   width: 60%;
   margin-left: auto;
   margin-right: auto;
+  width: 250px;
 }
 
-.genreChoicesSection, .bandLookingFor, .youtubeSubmit {
+.genreChoicesSection, .bandLookingFor, .youtubeSubmit, .stage-name{
   text-align: left;
-  margin-left: 10vw;
+  font-family: 'Unica One';
 }
 
+.save-button {
+  font-family: 'Unica One';
+}
 .youtubeUrl {
-  width: 80%;
+  width: 250px;
+  margin: auto;
+  display: block;
 }
 
-.fb-button, .signup-button {
+.fb-button, .signup-button, .save-button {
   border-radius: 3px;
   background-color: #3897f0;
   color: white;
@@ -57,6 +74,10 @@ body {
   margin: auto;
 }
 
+.fb-button:hover{
+  text-decoration: none;
+  color: white;
+}
 
 .footer {
   margin-top: 50px;
@@ -102,4 +123,24 @@ body {
 .login-header {
   font-family: 'Amatic SC';
   margin-bottom: 20px;
+}
+
+.band-info {
+  text-align: left;
+}
+
+.page-header {
+  font-family: 'Permanent Marker';
+}
+
+.index-signup {
+  margin-top: 20px;
+  margin-bottom: -15px;
+}
+
+
+@media only screen and (max-width: 640px) {
+  div.card.info {
+    width : 100%;
+  }
 }

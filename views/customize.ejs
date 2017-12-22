@@ -9,10 +9,10 @@
     <style>
         body         { padding-top:80px; word-wrap:break-word; }
         .hidden       { display:none; }
-        .music-selector { text-align: center; }
+        /*.music-selector { text-align: center; }*/
         .choice-btn      { margin-left: 2vw;}
-        .bio            { height: 15vw;}
         .save-button    { margin-top: 3vw; }
+        .intro     { text-align: left; }
 
     </style>
 </head>
@@ -21,51 +21,22 @@
     <% include partials/header %>
   </header>
 
-  <div class="card">
+  <div class="card intro">
 
-    <div class="page-header text-center">
-        <h1>Edit Your Profile</h1>
+    <div class="text-center">
+        <h1 class='page-header'>Edit Your Profile</h1>
     </div>
-
-    <!--<div class='music-selector'>
-      <button class='artist-seeking choice-btn'>Artist seeking Band</input>
-      <button class='band-seeking choice-btn'>Band seeking Artist </input>
-    </div>
-
-
-    <form action="/customize" method = "post" class="row artist-info hidden">
-      <label for="artist-name">Artist Name</label>
-      <input type="text" name="artist-name" id="artist-name" placeholder="Name"/>
-      <label for="artist-bio">A little bit about yourself:</label>
-      <input type="text" name='artist-bio' id='artist-bio' placeholder="Describe your sound"/>
-
-      <fieldset class='genreChoices'>
-          <h3>Genre</h3>
-          <input type="checkbox" name="genre" value="Rock"> Rock<br>
-          <input type="checkbox" name="genre" value="IndieRock"> Indie<br>
-          <input type="checkbox" name="genre" value="Alternative"> Alternative<br>
-          <input type="checkbox" name="genre" value="Hip-hop"> Hip-hop<br>
-          <input type="checkbox" name="genre" value="Metal"> Metal<br>
-          <input type="checkbox" name="genre" value="Psychadelic"> Psychadelic<br>
-          <input type="checkbox" name="genre" value="Experimental"> Experimental<br>
-          <input type="checkbox" name="genre" value="Electronic"> Electronic
-      </fieldset>
-      <button class='save-button'>Save</button>
-  </form>-->
-
 
     <form class='save-stuff'>    <!-- band info, bio, and images. -->
-    <div class="row band-info">
-      <div class="form-group band-info">
-          <label>Stage Name</label>
-          <input type="text" class="form-control" name="band-name"/>
-      </div>
-      <div class="form-group">
-          <label>A little bit about your band</label>
-          <textarea type="text" class="form-control bio" name="band-bio"></textarea>
-      </div>
-      <section class='genreChoicesSection'>
-          <h3>Genre</h3>
+      <div class="band-info">
+        <div class="form-group band-info">
+          <input type="text" class="form-control stage-name" name="band-name" placeholder="Stage Name" required/>
+        </div>
+        <div class="form-group">
+          <textarea type="text" class="form-control stage-name" name="band-bio" placeholder="A little bit about you..." required></textarea>
+        </div>
+        <section class='genreChoicesSection'>
+          <h3 class='page-header'>Genre</h3>
           <input class='genreChoices' type="checkbox" name="genre" value=" Rock"> Rock<br>
           <input class='genreChoices' type="checkbox" name="genre" value=" Indie"> Indie<br>
           <input class='genreChoices' type="checkbox" name="genre" value=" Alternative"> Alternative<br>
@@ -74,36 +45,34 @@
           <input class='genreChoices' type="checkbox" name="genre" value=" Psychadelic"> Psychadelic<br>
           <input class='genreChoices' type="checkbox" name="genre" value=" Experimental"> Experimental<br>
           <input class='genreChoices' type="checkbox" name="genre" value=" Electronic"> Electronic
-      </section>
-      <section class='bandLookingFor'>
-        <h3> Looking for people who can rock:</h3>
-        <input class='skill' type="checkbox" name="skill" value=" Vocalist"> Vocals<br>
-        <input class='skill' type="checkbox" name="skill" value=" Lead Guitarist"> Lead Guitar<br>
-        <input class='skill' type="checkbox" name="skill" value=" Rhythm Guitarist"> Rhythm Guitar<br>
-        <input class='skill' type="checkbox" name="skill" value=" Bassist"> Bass Guitar<br>
-        <input class='skill' type="checkbox" name="skill" value=" Drummer"> Drumms<br>
-        <input class='skill' type="checkbox" name="skill" value=" Keyboard player"> Keyboard<br>
-        <input class='skill' type="checkbox" name="skill" value=" Saxophone player"> Saxophone<br>
-        <input class='skill' type="checkbox" name="skill" value=" Upright Bass player"> Upright Bass<br>
-        <input class='skill' type="checkbox" name="skill" value=" Celloist"> Cello<br>
-        <input class='skill' type="checkbox" name="skill" value=" Violinist"> Violin<br>
-        <input class='skill' type="checkbox" name="skill" value=" Trumpeter"> Trumpet<br>
-        <input class='skill' type="checkbox" name="skill" value=" Producer"> Production<br>
-        <input class='skill' type="checkbox" name="skill" value=" Pianist"> Piano<br>
-        <input class='skill' type="checkbox" name="skill" value=" DJ"> DJ
-      </section>
-      <div class='youtubeSubmit'>
-        <h3> Submit a video of yourself </h3>
-        <input type='text' class= 'youtubeUrl' placeholder="Enter Your YouTube URL" >
+        </section>
+        <section class='bandLookingFor'>
+          <h3 class="page-header"> Looking for people who can rock:</h3>
+          <input class='skill' type="checkbox" name="skill" value=" Vocalist"> Vocals<br>
+          <input class='skill' type="checkbox" name="skill" value=" Lead Guitarist"> Lead Guitar<br>
+          <input class='skill' type="checkbox" name="skill" value=" Rhythm Guitarist"> Rhythm Guitar<br>
+          <input class='skill' type="checkbox" name="skill" value=" Bassist"> Bass Guitar<br>
+          <input class='skill' type="checkbox" name="skill" value=" Drummer"> Drumms<br>
+          <input class='skill' type="checkbox" name="skill" value=" Keyboard player"> Keyboard<br>
+          <input class='skill' type="checkbox" name="skill" value=" Saxophone player"> Saxophone<br>
+          <input class='skill' type="checkbox" name="skill" value=" Upright Bass player"> Upright Bass<br>
+          <input class='skill' type="checkbox" name="skill" value=" Celloist"> Cello<br>
+          <input class='skill' type="checkbox" name="skill" value=" Violinist"> Violin<br>
+          <input class='skill' type="checkbox" name="skill" value=" Trumpeter"> Trumpet<br>
+          <input class='skill' type="checkbox" name="skill" value=" Producer"> Production<br>
+          <input class='skill' type="checkbox" name="skill" value=" Pianist"> Piano<br>
+          <input class='skill' type="checkbox" name="skill" value=" DJ"> DJ
+        </section>
+        <div class='youtubeSubmit'>
+          <h3 class='page-header'> Submit a video of yourself </h3>
+          <input type='text' class= 'youtubeUrl' placeholder="Enter Your YouTube URL" >
+        </div>
+        <button type= 'submit' class="save-button"> Submit</button>
       </div>
-      <!--<button type="submit" class="save-button hidden">Save</button>-->
-      <button type= 'submit' class="save-button btn btn-default"> Submit</button>
-    </div>
-  </form>
+    </form>
+  </div>
 
 
-
-</div>
 <script
   src="https://code.jquery.com/jquery-3.2.1.js"
   integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="

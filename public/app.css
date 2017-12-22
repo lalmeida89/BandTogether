@@ -7,18 +7,19 @@
   overflow: hidden;
   margin-left: auto;
   margin-right: auto;
-  /*margin: 0 auto 0 auto;*/
+  margin-bottom: 30px;
   min-width: 230px;
-  width: 80%;
+  width: 350px;
   color: #141414;
   text-align: left;
   line-height: 1.4em;
   background-color: white;
-  border-radius: 15px;
   padding: 15px;
   border: 1px solid #484848;
   box-shadow:0 2px 6px;
-  opacity: .75;
+  opacity: .95;
+  width: 350px;
+  border-radius: 4px;
 }
 /*.snip1336 * {
   -webkit-box-sizing: border-box;
@@ -87,10 +88,31 @@
   text-align: left;
 }*/
 
+.profile-intro {
+  font-family: 'Amatic SC';
+  margin-bottom: 10px;
+  font-size: 40px;
+}
+
+.audition-header {
+  font-family: 'Amatic SC';
+  margin-bottom: 10px;
+  font-size: 32px;
+  text-align: center;
+}
+
 li h2 span {
+  margin-top: 3px;
   display: block;
-  font-size: 0.5em;
+  font-size: 13px;
+  font-family: 'Unica One';
   color: #2980b9;
+}
+
+.profile-bio {
+  margin-top: 30px;
+  font-size: 12px;
+  font-family: 'Open Sans', sans-serif;
 }
 
 li p {
@@ -98,6 +120,7 @@ li p {
   font-size: 1em;
   letter-spacing: 1px;
   opacity: 0.8;
+  margin-bottom: 25px;
 }
 /* Demo purposes only */
 body {
@@ -108,7 +131,6 @@ iframe {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 80%;
   /*border: 1px dashed green;*/
 }
 button {
