@@ -28,6 +28,7 @@ module.exports = function(app, passport) {
           let chat = new Chat();
           chat.users.push(req.user._id);
           chat.users.push(them._id);
+          chat.users.push(them.name);
           chat.save(function(err,room) {
             console.log(req.user);
             console.log('created chat');
@@ -61,13 +62,23 @@ module.exports = function(app, passport) {
       })
     });
 
+    app.get('/matches', isLoggedIn, function(req, res) {
+      User.find().exec().then(x => {
+
+        res.render('matches.ejs', {
+            user : req.user,
+            all  : x
+        });
+      });
+    });
+
     app.get('/chat/:chatId', isLoggedIn, function(req, res) {
       Chat.findOne({_id:req.params.chatId}, function(err, x) {
         console.log(err, x);
         console.log('nut muffins');
         res.render('chat.ejs', {
-            user : req.user
-            //chats  : x.chats
+            user : req.user,
+            chats  : x.chats
         });
       });
     });
@@ -79,8 +90,9 @@ module.exports = function(app, passport) {
       Chat.update(
         { _id: req.params.chatId },
         { $push: { chats: req.body.chat} },
-        function(res) {
-          console.log('pineapple', res);
+        function(r) {
+          console.log('pineapple', r);
+          res.redirect(`/chat/${req.params.chatId}`)
         });
     });
 
@@ -135,7 +147,11 @@ module.exports = function(app, passport) {
         }));
 
         app.get('/customize', isLoggedIn, function(req, res) {
-            res.render('customize.ejs', { message: req.flash('signupMessage') });
+          console.log(req.user);
+            res.render('customize.ejs', {
+              message: req.flash('signupMessage'),
+              user : req.user
+            });
         });
 
         app.post('/customize', isLoggedIn, function(req, res) {

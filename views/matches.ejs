@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+<head>
+    <title>Band Together</title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+    <link href="app.css" rel="stylesheet" type="text/css" />
+    <link href="mobile.css" rel="stylesheet" type="text/css" />
+    <% include partials/head %>
+    <style>
+        li           {display: block;}
+        .profile-intro  {text-align: center;}
+    </style>
+
+</head>
+
+<body>
+
+  <header>
+    <% include partials/matches-header %>
+  </header>
+
+      <ul class='card'>
+        <h2 class='profile-intro'>Your matches</h2>
+          <% for(var i=0; i<user.matches.length; i++) { %>
+            <li class='matches-list'>
+                  <a href='chat/<%= user.matches[i].chatId %>'>
+                      <%= user.matches[i].userName %>
+                      <%= user.matches[i].userId %>
+                      <%= user.matches[i].email %>
+                  </a>
+              </li>
+          <% } %>
+        </ul>
+
+
+        <!--<ul>
+        <% for(var i=0; i<user.matches.length; i++) { %>
+            <li>
+                <a href='chat/<%= user.matches[i].chatId %>'>
+                    <%= user.matches[i].userName %>
+                    <%= user.matches[i].userId %>
+                    <%= user.matches[i].email %>
+                </a>
+            </li>
+        <% } %>
+      </ul>-->
+</body>
+</html>

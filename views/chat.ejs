@@ -2,7 +2,7 @@
 <html>
   <head>
     <title>Socket.IO chat</title>
-    <link href="index-app.css" rel="stylesheet" type="text/css" />
+    <!--<link href="index-app.css" rel="stylesheet" type="text/css" />-->
     <% include partials/head %>
     <style>
       * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -24,7 +24,12 @@
     </header>
 
     <div class='box'>
-      <ul id="messages"></ul>
+      <ul id="messages">
+        <% for (var i = 0; i < chats.length; i++) { %>
+          <li><%= chats[i] %>
+          </li>
+        <% } %>
+      </ul>
       <form action="">
         <input id="m" autocomplete="off" /><button>Send</button>
       </form>

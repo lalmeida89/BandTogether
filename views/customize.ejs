@@ -5,17 +5,10 @@
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
     <link href="index-app.css" rel="stylesheet" type="text/css" />
+    <link href="mobile.css" rel="stylesheet" type="text/css" />
     <% include partials/head %>
-    <style>
-        body         { padding-top:80px; word-wrap:break-word; }
-        .hidden       { display:none; }
-        /*.music-selector { text-align: center; }*/
-        .choice-btn      { margin-left: 2vw;}
-        .save-button    { margin-top: 3vw; }
-        .intro     { text-align: left; }
-
-    </style>
 </head>
+
 <body>
   <header>
     <% include partials/header %>
@@ -30,43 +23,45 @@
     <form class='save-stuff'>    <!-- band info, bio, and images. -->
       <div class="band-info">
         <div class="form-group band-info">
-          <input type="text" class="form-control stage-name" name="band-name" placeholder="Stage Name" required/>
+          <input type="text" class="form-control stage-name" name="band-name" placeholder="Stage Name" required value='<%= user.name %>'/>
         </div>
         <div class="form-group">
-          <textarea type="text" class="form-control stage-name" name="band-bio" placeholder="A little bit about you..." required></textarea>
+          <p class='band-bio-label'>A little bit about you..</p>
+          <textarea type="text" class="form-control stage-name" name="band-bio" placeholder="A little bit about you..." required ><%= user.bio %></textarea>
+        </div>
+        <div class='youtubeSubmit'>
+          <p class='band-bio-label'> Submit a video of yourself </p>
+          <input type='text' class= 'youtubeUrl' placeholder="Enter Your YouTube URL" value = 'https://www.youtube.com/watch?v=<%= user.youtube %>'/>
         </div>
         <section class='genreChoicesSection'>
           <h3 class='page-header'>Genre</h3>
-          <input class='genreChoices' type="checkbox" name="genre" value=" Rock"> Rock<br>
-          <input class='genreChoices' type="checkbox" name="genre" value=" Indie"> Indie<br>
-          <input class='genreChoices' type="checkbox" name="genre" value=" Alternative"> Alternative<br>
-          <input class='genreChoices' type="checkbox" name="genre" value=" Hip-hop"> Hip-hop<br>
-          <input class='genreChoices' type="checkbox" name="genre" value=" Metal"> Metal<br>
-          <input class='genreChoices' type="checkbox" name="genre" value=" Psychadelic"> Psychadelic<br>
-          <input class='genreChoices' type="checkbox" name="genre" value=" Experimental"> Experimental<br>
-          <input class='genreChoices' type="checkbox" name="genre" value=" Electronic"> Electronic
+          <input class='genreChoices' type="checkbox" name="genre" value="Rock" <%= user.genres.indexOf("Rock")> -1 ? "checked" : "" %>> Rock<br>
+          <input class='genreChoices' type="checkbox" name="genre" value="Indie" <%= user.genres.indexOf("Indie")> -1 ? "checked" : "" %>> Indie<br>
+          <input class='genreChoices' type="checkbox" name="genre" value="Alternative" <%= user.genres.indexOf("Alternative")> -1 ? "checked" : "" %>> Alternative<br>
+          <input class='genreChoices' type="checkbox" name="genre" value="Hip-hop" <%= user.genres.indexOf("Hip-Hop")> -1 ? "checked" : "" %>> Hip-hop<br>
+          <input class='genreChoices' type="checkbox" name="genre" value="Metal" <%= user.genres.indexOf("Metal")> -1 ? "checked" : "" %>> Metal<br>
+          <input class='genreChoices' type="checkbox" name="genre" value="Psychadelic" <%= user.genres.indexOf("Psychadelic")> -1 ? "checked" : "" %>> Psychadelic<br>
+          <input class='genreChoices' type="checkbox" name="genre" value="Experimental" <%= user.genres.indexOf("Experimental")> -1 ? "checked" : "" %>> Experimental<br>
+          <input class='genreChoices' type="checkbox" name="genre" value="Electronic" <%= user.genres.indexOf("Electronic")> -1 ? "checked" : "" %>> Electronic
         </section>
         <section class='bandLookingFor'>
           <h3 class="page-header"> Looking for people who can rock:</h3>
-          <input class='skill' type="checkbox" name="skill" value=" Vocalist"> Vocals<br>
-          <input class='skill' type="checkbox" name="skill" value=" Lead Guitarist"> Lead Guitar<br>
-          <input class='skill' type="checkbox" name="skill" value=" Rhythm Guitarist"> Rhythm Guitar<br>
-          <input class='skill' type="checkbox" name="skill" value=" Bassist"> Bass Guitar<br>
-          <input class='skill' type="checkbox" name="skill" value=" Drummer"> Drumms<br>
-          <input class='skill' type="checkbox" name="skill" value=" Keyboard player"> Keyboard<br>
-          <input class='skill' type="checkbox" name="skill" value=" Saxophone player"> Saxophone<br>
-          <input class='skill' type="checkbox" name="skill" value=" Upright Bass player"> Upright Bass<br>
-          <input class='skill' type="checkbox" name="skill" value=" Celloist"> Cello<br>
-          <input class='skill' type="checkbox" name="skill" value=" Violinist"> Violin<br>
-          <input class='skill' type="checkbox" name="skill" value=" Trumpeter"> Trumpet<br>
-          <input class='skill' type="checkbox" name="skill" value=" Producer"> Production<br>
-          <input class='skill' type="checkbox" name="skill" value=" Pianist"> Piano<br>
-          <input class='skill' type="checkbox" name="skill" value=" DJ"> DJ
+          <input class='skill' type="checkbox" name="skill" value="Vocalist" <%= user.seeking.indexOf("Vocalist")> -1 ? "checked" : "" %>> Vocals<br>
+          <input class='skill' type="checkbox" name="skill" value="Lead Guitarist" <%= user.seeking.indexOf("Lead Guitarist")> -1 ? "checked" : "" %>> Lead Guitar<br>
+          <input class='skill' type="checkbox" name="skill" value="Rhythm Guitarist" <%= user.seeking.indexOf("Rhythm Guitarist")> -1 ? "checked" : "" %>> Rhythm Guitar<br>
+          <input class='skill' type="checkbox" name="skill" value="Bassist" <%= user.seeking.indexOf("Bassist")> -1 ? "checked" : "" %>> Bass Guitar<br>
+          <input class='skill' type="checkbox" name="skill" value="Drummer" <%= user.seeking.indexOf("Drummer")> -1 ? "checked" : "" %>> Drumms<br>
+          <input class='skill' type="checkbox" name="skill" value="Keyboardist" <%= user.seeking.indexOf("Keyboardist")> -1 ? "checked" : "" %>> Keyboard<br>
+          <input class='skill' type="checkbox" name="skill" value="Saxophonist" <%= user.seeking.indexOf("Saxophonist")> -1 ? "checked" : "" %>> Saxophone<br>
+          <input class='skill' type="checkbox" name="skill" value="Upright Bassist" <%= user.seeking.indexOf("Upright Bassist")> -1 ? "checked" : "" %>> Upright Bass<br>
+          <input class='skill' type="checkbox" name="skill" value="Celloist" <%= user.seeking.indexOf("Celloist")> -1 ? "checked" : "" %>> Cello<br>
+          <input class='skill' type="checkbox" name="skill" value="Violinist" <%= user.seeking.indexOf("Violinist")> -1 ? "checked" : "" %>> Violin<br>
+          <input class='skill' type="checkbox" name="skill" value="Trumpeter" <%= user.seeking.indexOf("Trumpeter")> -1 ? "checked" : "" %>> Trumpet<br>
+          <input class='skill' type="checkbox" name="skill" value="Producer" <%= user.seeking.indexOf("Producer")> -1 ? "checked" : "" %>> Production<br>
+          <input class='skill' type="checkbox" name="skill" value="Pianist" <%= user.seeking.indexOf("Pianist")> -1 ? "checked" : "" %>> Piano<br>
+          <input class='skill' type="checkbox" name="skill" value="DJ" <%= user.seeking.indexOf("DJ")> -1 ? "checked" : "" %>> DJ
         </section>
-        <div class='youtubeSubmit'>
-          <h3 class='page-header'> Submit a video of yourself </h3>
-          <input type='text' class= 'youtubeUrl' placeholder="Enter Your YouTube URL" >
-        </div>
+
         <button type= 'submit' class="save-button"> Submit</button>
       </div>
     </form>
@@ -79,19 +74,6 @@
   crossorigin="anonymous"></script>
 
 <script>
-  $('.band-seeking').click (function(e) {
-    e.preventDefault();
-    $('.band-info').removeClass('hidden');
-    $('.save-button').removeClass('hidden');
-    $('.artist-info').addClass('hidden');
-  });
-
-  $('.artist-seeking').click (function(e) {
-    e.preventDefault();
-    $('.artist-info').removeClass('hidden');
-    $('.save-button').removeClass('hidden');
-    $('.band-info').addClass('hidden');
-  });
 
   $('form.save-stuff').submit (function(e) {
     //event.preventDefault();

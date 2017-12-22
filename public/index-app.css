@@ -117,17 +117,17 @@ body {
   margin: auto;
 }
 
-.login-header {
+.login-header, .page-header {
   font-family: 'Amatic SC';
   margin-bottom: 20px;
 }
 
-.band-info {
-  text-align: left;
+.page-header {
+  font-size: 30px;
 }
 
-.page-header {
-  font-family: 'Permanent Marker';
+.band-info {
+  text-align: left;
 }
 
 .index-signup {
@@ -135,9 +135,38 @@ body {
   margin-bottom: -15px;
 }
 
+.choice-btn  {
+  margin-left: 2vw;
+}
 
-@media only screen and (max-width: 640px) {
-  div.card.info {
-    width : 100%;
-  }
+.save-button  {
+  margin-top: 3vw;
+}
+
+.intro  {
+  width: 350px;
+  border-radius: 4px;
+}
+
+.home  {
+  width : 95%;
+}
+
+.fb-login  {
+  text-align: center;
+}
+
+.band-bio-label {
+  text-align: center;
+  color: #999;
+  font-family: 'Amatic SC';
+  font-size: 18px;
+}
+
+.band-bio {
+  margin: auto;
+}
+
+textarea.form-control {
+  height: 150px;
 }

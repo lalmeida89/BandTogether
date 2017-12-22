@@ -1,0 +1,17 @@
+body  {
+  padding-top:70px;
+  word-wrap:break-word;
+  padding-bottom: 40px;
+}
+
+.hidden  {
+  display:none;
+}
+
+@media only screen and (max-width: 640px) {
+
+  .card {
+    width : 100%;
+  }
+
+}
