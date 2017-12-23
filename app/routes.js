@@ -62,6 +62,10 @@ module.exports = function(app, passport) {
       })
     });
 
+    //app.get('/profile/:params', isLoggedIn, function(req, res){
+      //res.render('profile.ejs');
+    //});
+
     app.get('/matches', isLoggedIn, function(req, res) {
       User.find().exec().then(x => {
 
@@ -164,7 +168,8 @@ module.exports = function(app, passport) {
             req.user.save(function(err) {
             });
             res.end();
-        })
+        });
+
         function getId(url) {
           var regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
           var match = url.match(regExp);
