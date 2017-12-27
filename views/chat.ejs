@@ -2,22 +2,12 @@
 <html>
   <head>
     <title>Band Together</title>
-    <!--<link href="index-app.css" rel="stylesheet" type="text/css" />-->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
     <% include partials/head %>
-    <style>
-      * { margin: 0; padding: 0; box-sizing: border-box; }
-      body { font: 13px Helvetica, Arial; }
-      form { background: #000; padding: 3px; position: fixed; bottom: 0; width: 100%; }
-      form input { border: 0; padding: 10px; width: 90%; margin-right: .5%; }
-      form button { width: 9%; background: rgb(130, 224, 255); border: none; padding: 10px; }
-      #messages { list-style-type: none; margin-top: 70px; padding: 0; border: 1px dashed green;}
-      #messages li { padding: 5px 10px; }
-      #messages li:nth-child(odd) { background: #eee; }
-      #messages { margin-bottom: 40px }
-      .card     { margin-top: 20vw;}
-      .box     { border: 1px dashed blue; height: 400px;}
-    </style>
+    <% include partials/chat-styles %>
+
   </head>
+
   <body>
     <header>
       <% include partials/header %>
@@ -26,22 +16,25 @@
     <div class='box'>
       <ul id="messages">
         <% for (var i = 0; i < chats.length; i++) { %>
-          <li><%= chats[i] %>
+          <li class="<%= String(chats[i].owner) == String(user._id) ? 'yours' : 'notYours' %>" ><%= chats[i].message %>
           </li>
         <% } %>
       </ul>
-      <form action="">
-        <input id="m" autocomplete="off" /><button>Send</button>
-      </form>
     </div>
+      <form action="">
+        <input id="m" autocomplete="off" placeholder="Type anything..."/><button>Send</button>
+      </form>
 
 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
     <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
     <script>
+
       $(function () {
         var socket = io();
+        var me = <%- JSON.stringify(user._id) %>;
+        console.log(me);
         var room = window.location.pathname.split("/").pop();
 
           socket.on('connect', function() {
@@ -51,15 +44,21 @@
 
         $('form').submit(function(){
           $.post('', {'chat' : $('#m').val()}, function(result) {
-            console.log(result);
-          });
+            });
 
-          socket.emit('chat message', $('#m').val(), room);
+          socket.emit('chat message', {message:$('#m').val(), owner: me}, room);
           $('#m').val('');
           return false;
         });
         socket.on('chat message', function(msg){
-          $('#messages').append($('<li>').text(msg));
+          console.log(msg);
+          if (msg.owner == me) {
+              $('#messages').append($('<li class="yours">').text(msg.message));
+          }
+          else {
+              $('#messages').append($('<li class="notYours">').text(msg.message));
+          }
+
           window.scrollTo(0, document.body.scrollHeight);
         });
       });

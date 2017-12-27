@@ -24,7 +24,7 @@
 
     <% for (var i = 0; i < all.length; i++) { %>
         <li data-id= '<%= all[i].id %>' class = "<%= i !== 0 ? 'card': 'card current' %>">
-          <h2 class='profile-intro'><%= all[i].name %><span><%= all[i].genres %></span><span>Looking for: <%=all[i].seeking %></span></h2>
+          <h2 class='profile-intro'><span id='name'><%= all[i].name %></span><span><%= all[i].genres %></span><span>Looking for: <%=all[i].seeking %></span></h2>
           <!--<p>Email: <%= all[i].local.email %> </p>
 
           <%= all[i].facebook.name %>
@@ -40,6 +40,7 @@
           <button class='dislikeButton lk-btn' value='dislikes'><i class="fa fa-thumbs-down"></i></button>
         </li>
       <% } %>
+      
 
 </body>
 
@@ -60,7 +61,7 @@
     //$(this).parent().prev().addClass('prev')
     let id = $(this).parent().data('id');
     let value = this.value;
-    let name = this.name;
+    let name = $('#name').text();
     $.post('',
     {
         id    : id,
@@ -68,8 +69,12 @@
         name  : name
     },
     function(data, status){
-        console.log("Data: " + data + "\nStatus: " + status);
-    });
+      if (data.match != null) {
+          alert (data.match.name);
+      }
+        console.log(data);
+    }
+  );
 });
 </script>
 

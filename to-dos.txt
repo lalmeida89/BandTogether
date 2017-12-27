@@ -27,17 +27,18 @@ has been created. if yes, redirect to profile page. if not, redirect to customiz
 
 get youtube video embedded
       -add an *embed* to URL -- done
-      -youtube url validation
+      -youtube url validation -- done
 **possibly** swiping or other user transition
-whole lotta CSS
+whole lotta CSS -- done
 saving chats-- done
-chats css
+chats css -- done
 socket.io dynamic rooms --done
 heroku deployment -- done
 edit profile with preloaded data -- done
-edit profile update user matches arrays
+edit profile update user matches arrays--done
 social auths set up
-make dashboard not repeat profiles that youve already liked or disliked
-make dashboard not show own profile
+make dashboard not repeat profiles that youve already liked or disliked--done
+make dashboard not show own profile--done
 make matches show name or email not id
 info not showing up on phones from customize -> profile
+have users chat message align > right (differentiating which user POSTs to the chat)

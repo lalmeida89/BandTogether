@@ -7,15 +7,20 @@ module.exports = function(app, passport) {
 
     // PROFILE SECTION =========================
     app.get('/dashboard', isLoggedIn, function(req, res) {
-      User.find().exec().then(x => {
-
+      console.log(req.user);
+      let arr = req.user.likes.concat(req.user.dislikes);
+      arr.push(req.user.id);
+      console.log(arr);
+      User.find( { _id: { $nin: arr } } ).exec().then(x => {
+        //find({_id:{$nin:[ObjectId("5a429caf0a5f1a17eec1340a") ]}})
         console.log(x, 'ginger')
         res.render('dashboard.ejs', {
             user : req.user,
             all  : x
         });
-      })
+      }).catch(error => {throw error});
     });
+
     app.post('/dashboard', isLoggedIn, function(req, res) {
       console.log(req.body);
       console.log('pumps', req.body.name);
@@ -23,7 +28,7 @@ module.exports = function(app, passport) {
 
       //check for likes from another user
       User.findOne({_id:req.body.id}).exec().then(them => {
-        if (them.likes.indexOf(req.user._id) != -1){
+        if (them.likes.indexOf(req.user._id) != -1 && req.body.value == 'likes'){
           //match found
           let chat = new Chat();
           chat.users.push(req.user._id);
@@ -41,12 +46,14 @@ module.exports = function(app, passport) {
             //saves likes and dislikes to logged in user
             req.user[req.body.value].push(req.body.id);
             req.user.save();
+            res.json({match:req.body});
           });
 
         } else {
           //saves likes and dislikes to logged in user
           req.user[req.body.value].push(req.body.id);
           req.user.save();
+          res.json({match: null});
         };
       });
     });
@@ -68,6 +75,7 @@ module.exports = function(app, passport) {
 
     app.get('/matches', isLoggedIn, function(req, res) {
       User.find().exec().then(x => {
+        console.log(x.matches);
 
         res.render('matches.ejs', {
             user : req.user,
@@ -93,7 +101,7 @@ module.exports = function(app, passport) {
       console.log(req.params);
       Chat.update(
         { _id: req.params.chatId },
-        { $push: { chats: req.body.chat} },
+        { $push: { chats: {message : req.body.chat, owner : req.user._id}}},
         function(r) {
           console.log('pineapple', r);
           res.redirect(`/chat/${req.params.chatId}`)
@@ -189,7 +197,7 @@ module.exports = function(app, passport) {
         // handle the callback after facebook has authenticated the user
         app.get('/auth/facebook/callback',
             passport.authenticate('facebook', {
-                successRedirect : '/profile',
+                successRedirect : '/customize',
                 failureRedirect : '/'
             }));
 
