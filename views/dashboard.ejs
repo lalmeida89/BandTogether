@@ -12,6 +12,7 @@
         li.selected { opacity: 0; display: none;}
         li.next     { opacity : 1; display: block;}
         li.current { display: block; opacity: 1; margin: auto;}
+        .hidden    { display: none;}
     </style>
 
 </head>
@@ -40,7 +41,14 @@
           <button class='dislikeButton lk-btn' value='dislikes'><i class="fa fa-thumbs-down"></i></button>
         </li>
       <% } %>
-      
+
+      <div id="myModal" class="modal hidden">
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <h2 class='matched-txt'>You guys dig each other. Head over to the chat section to start jammin</h2>
+          <img class='matched-img' src="https://media1.tenor.com/images/8fa48b352641fddbec354aa66231f98d/tenor.gif?itemid=8669364">
+        </div>
+      </div>
 
 </body>
 
@@ -54,11 +62,8 @@
   $('.lk-btn').click (function(e) {
     window.par = this;
     console.log($(this).parent().data('id'))
-    //$(this).parent().addClass('selected')
     $('.card').removeClass('current');
     $(this).parent().next().addClass('current');
-    //$(this).parent().next().addClass('next')
-    //$(this).parent().prev().addClass('prev')
     let id = $(this).parent().data('id');
     let value = this.value;
     let name = $('#name').text();
@@ -70,8 +75,18 @@
     },
     function(data, status){
       if (data.match != null) {
-          alert (data.match.name);
+          //alert (data.match.name);
+          //$('#myModal').removeClass('hidden');
+          console.log($('.modal'), 'butt')
+          $('.modal').removeClass('hidden');
+          //show modal
+          //let feedback = $('.modal-content')
+          //feedback.find('h2').text('You have matched!');
+          //feedback.find('img').attr('src', 'http://mrwgifs.com/wp-content/uploads/2016/03/I-Like-What-You-Got-Good-Job-On-Rick-and-Morty-Get-Schwifty.gif');
       }
+      $('.close' || !'.modal').click(function(e) {
+        $('.modal').addClass('hidden');//close the modal when clicking on the x
+      });
         console.log(data);
     }
   );
