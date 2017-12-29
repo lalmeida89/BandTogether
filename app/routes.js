@@ -89,7 +89,7 @@ module.exports = function(app, passport) {
         console.log(err, x);
         console.log('nut muffins');
         res.render('chat.ejs', {
-            user : req.user,
+            user   : req.user,
             chats  : x.chats
         });
       });

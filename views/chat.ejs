@@ -2,7 +2,9 @@
 <html>
   <head>
     <title>Band Together</title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <% include partials/head %>
     <% include partials/chat-styles %>
 
@@ -23,7 +25,9 @@
     </div>
       <form action="">
         <input id="m" autocomplete="off" placeholder="Type anything..."/><button>Send</button>
+        <!--<i class="fa fa-paper-plane" aria-hidden="true"></i>-->
       </form>
+
 
 
 
@@ -34,7 +38,9 @@
       $(function () {
         var socket = io();
         var me = <%- JSON.stringify(user._id) %>;
-        console.log(me);
+        var meName = <%- JSON.stringify(user.name) %>;
+        var them = <%- JSON.stringify(chats) %>
+        console.log(me, meName, them);
         var room = window.location.pathname.split("/").pop();
 
           socket.on('connect', function() {

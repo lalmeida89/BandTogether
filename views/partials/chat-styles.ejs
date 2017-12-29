@@ -34,6 +34,7 @@ form button {
   border: none;
   padding: 10px;
   border-radius: 3px;
+  text-align: center;
 }
 
 div.box {
@@ -86,5 +87,30 @@ div.box {
 .notyours {
   background: #eee;
 }
+
+@media only screen and (max-width: 650px) {
+
+  div.box {
+    width : 100%;
+  }
+
+  form input {
+    width : 90%;
+  }
+
+  form button {
+    width: 9%;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+
+  form button {
+    display: none;
+  }
+
+  form input {
+    width: 100%;
+  }
 
 </style>

@@ -216,7 +216,7 @@ iframe {
 }
 
 .modal img{
-  width: 100%;
+  width: 80%;
 }
 
 /* Modal Content */
@@ -226,6 +226,7 @@ iframe {
     padding: 20px;
     border: 1px solid #888;
     width: 80%;
+    text-align: center;
 }
 
 /* The Close Button */
@@ -245,4 +246,26 @@ iframe {
 
 .block {
   display: block;
+}
+
+.matched-txt, .small-matched-txt {
+  font-family: 'Amatic SC';
+  text-align: center;
+}
+
+.chatRedirect, .noLove {
+  text-align: center;
+  font-size: 14px;
+  font-family: 'Open Sans'
+}
+
+.matches-list {
+  font-size: 16px;
+  font-family: 'Open Sans';
+  margin-left: 80px;
+}
+
+.matches-list:hover {
+  background-color: #8080804d;
+  margin-right: 80px;
 }

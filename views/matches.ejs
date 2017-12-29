@@ -26,24 +26,14 @@
             <li class='matches-list'>
                   <a href='chat/<%= user.matches[i].chatId %>'>
                       <%= user.matches[i].userName %>
-                      <!--<%= user.matches[i].userId %>
-                      <%= user.matches[i].email %>-->
                   </a>
               </li>
+          <% } %>
+          <% if (user.matches.length <= 0) { %>
+            <h3 class='noLove'> You currently have no matches. Head to the <a href='/dashboard'>dashboard</a> to find people near you. </h3>
           <% } %>
         </ul>
 
 
-        <!--<ul>
-        <% for(var i=0; i<user.matches.length; i++) { %>
-            <li>
-                <a href='chat/<%= user.matches[i].chatId %>'>
-                    <%= user.matches[i].userName %>
-                    <%= user.matches[i].userId %>
-                    <%= user.matches[i].email %>
-                </a>
-            </li>
-        <% } %>
-      </ul>-->
 </body>
 </html>

@@ -40,15 +40,21 @@
           <button class='likeButton lk-btn' value='likes'><i class="fa fa-thumbs-up"></i></button>
           <button class='dislikeButton lk-btn' value='dislikes'><i class="fa fa-thumbs-down"></i></button>
         </li>
-      <% } %>
+
+          <% } %>
 
       <div id="myModal" class="modal hidden">
         <div class="modal-content">
           <span class="close">&times;</span>
-          <h2 class='matched-txt'>You guys dig each other. Head over to the chat section to start jammin</h2>
+          <h2 class='matched-txt'>It's a match!</h2>
+          <h3 class='small-matched-txt'></h3>
           <img class='matched-img' src="https://media1.tenor.com/images/8fa48b352641fddbec354aa66231f98d/tenor.gif?itemid=8669364">
+          <h3 class='chatRedirect'>Send them a message to set up your next jam sesh. <a href='/matches'>Go to your messages</a></h3>
+
         </div>
       </div>
+
+
 
 </body>
 
@@ -73,24 +79,25 @@
         value : value,
         name  : name
     },
-    function(data, status){
+    function(data, status){         //show modal
       if (data.match != null) {
-          //alert (data.match.name);
-          //$('#myModal').removeClass('hidden');
           console.log($('.modal'), 'butt')
           $('.modal').removeClass('hidden');
-          //show modal
-          //let feedback = $('.modal-content')
-          //feedback.find('h2').text('You have matched!');
-          //feedback.find('img').attr('src', 'http://mrwgifs.com/wp-content/uploads/2016/03/I-Like-What-You-Got-Good-Job-On-Rick-and-Morty-Get-Schwifty.gif');
+          let feedback = $('.modal-content')
+          feedback.find('.small-matched-txt').html('You and ' + name + ' were meant to jam together!');
       }
-      $('.close' || !'.modal').click(function(e) {
-        $('.modal').addClass('hidden');//close the modal when clicking on the x
+      $('.close'||!'.modal').click(function(e) {
+        $('.modal').addClass('hidden');//close the modal when clicking on the x or outside of the modal window
       });
         console.log(data);
     }
   );
 });
+
+  /*$('.chatRedirect').click(function(e){
+    window.location.href='/chat';
+  });*/
+
 </script>
 
 </html>

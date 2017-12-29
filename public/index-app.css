@@ -10,8 +10,6 @@ body {
 .card {
   font-family: 'Roboto', Arial, sans-serif;
   position: relative;
-  /*margin-left: 2.5em;
-  margin-right: auto;*/
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 75px;
