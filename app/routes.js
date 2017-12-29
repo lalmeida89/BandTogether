@@ -31,9 +31,10 @@ module.exports = function(app, passport) {
         if (them.likes.indexOf(req.user._id) != -1 && req.body.value == 'likes'){
           //match found
           let chat = new Chat();
-          chat.users.push(req.user._id);
-          chat.users.push(them._id);
-          chat.users.push(them.name);
+          let a = { userId : req.user._id, userName : req.user.name};
+          let b = { userId : them._id, userName : them.name}
+          chat.users.push(a);
+          chat.users.push(b);
           chat.save(function(err,room) {
             console.log(req.user);
             console.log('created chat');
@@ -90,7 +91,8 @@ module.exports = function(app, passport) {
         console.log('nut muffins');
         res.render('chat.ejs', {
             user   : req.user,
-            chats  : x.chats
+            chats  : x.chats,
+            users  : x.users
         });
       });
     });
@@ -174,8 +176,11 @@ module.exports = function(app, passport) {
             req.user.youtube = getId(req.body.youtube);
             req.user.seeking = req.body.seeking;
             req.user.save(function(err) {
+              res.redirect('/profile');
+              console.log('im inside you');
             });
-            res.end();
+
+            //res.end();
         });
 
         function getId(url) {

@@ -16,6 +16,11 @@
     </header>
 
     <div class='box'>
+      <% for (var i = 0; i < users.length; i++) { %>
+        <% if ( String(user._id) !== String(users[i].userId) ) { %>
+        <h2 class='chat-username'>Chatting with <%= users[i].userName %></h2>
+        <% } %>
+      <% } %>
       <ul id="messages">
         <% for (var i = 0; i < chats.length; i++) { %>
           <li class="<%= String(chats[i].owner) == String(user._id) ? 'yours' : 'notYours' %>" ><%= chats[i].message %>

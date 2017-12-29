@@ -93,6 +93,10 @@
   font-size: 40px;
 }
 
+span#name {
+  font-size: 26px;
+  color: black;
+}
 .audition-header {
   font-family: 'Amatic SC';
   margin-bottom: 10px;
@@ -268,4 +272,15 @@ iframe {
 .matches-list:hover {
   background-color: #8080804d;
   margin-right: 80px;
+}
+
+#end {
+  z-index: -1;
+  position: absolute;
+  top: 0;
+  margin: auto;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  height: 100px;
 }

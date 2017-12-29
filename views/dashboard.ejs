@@ -24,24 +24,21 @@
   </header>
 
     <% for (var i = 0; i < all.length; i++) { %>
-        <li data-id= '<%= all[i].id %>' class = "<%= i !== 0 ? 'card': 'card current' %>">
-          <h2 class='profile-intro'><span id='name'><%= all[i].name %></span><span><%= all[i].genres %></span><span>Looking for: <%=all[i].seeking %></span></h2>
-          <!--<p>Email: <%= all[i].local.email %> </p>
+      <li data-id= '<%= all[i].id %>' class = "<%= i !== 0 ? 'card': 'card current' %>">
+        <h2 class='profile-intro'><span id='name'><%= all[i].name %></span><span><%= all[i].genres %></span><span>Looking for: <%=all[i].seeking %></span></h2>
+        <p class='profile-bio'><%= all[i].bio %></p>
+        <h2 class="audition-header"> My Audition </h2>
+        <iframe width="286" height="200" src="//www.youtube.com/embed/<%= all[i].youtube %>" frameborder="0" allowfullscreen></iframe>
+        <button class='likeButton lk-btn' value='likes'><i class="fa fa-thumbs-up"></i></button>
+        <button class='dislikeButton lk-btn' value='dislikes'><i class="fa fa-thumbs-down"></i></button>
+      </li>
 
-          <%= all[i].facebook.name %>
-          <%= all[i].google.name %>-->
-          <!--<strong>YouTube URL</strong>: <%= all[i].youtube %><br>
+    <% } %>
 
-          <%if (all[i].genres.length > 0) {%>
-          <strong>Genres</strong>: <%= all[i].genres %><br> <%}%>-->
-          <p class='profile-bio'><%= all[i].bio %></p>
-          <h2 class="audition-header"> My Audition </h2>
-          <iframe width="286" height="200" src="//www.youtube.com/embed/<%= all[i].youtube %>" frameborder="0" allowfullscreen></iframe>
-          <button class='likeButton lk-btn' value='likes'><i class="fa fa-thumbs-up"></i></button>
-          <button class='dislikeButton lk-btn' value='dislikes'><i class="fa fa-thumbs-down"></i></button>
-        </li>
+    <li class = 'card current' id='end'>
+      <h2 class='profile-intro'>You've reached the end</h2>
 
-          <% } %>
+    </li>
 
       <div id="myModal" class="modal hidden">
         <div class="modal-content">

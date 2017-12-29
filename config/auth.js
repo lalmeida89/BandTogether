@@ -6,7 +6,7 @@ module.exports = {
     'facebookAuth' : {
         'clientID'        : '167042607230891', // your App ID
         'clientSecret'    : 'b4171ce558b2b05bdb9fbf41ff9a5bb5', // your App Secret
-        'callbackURL'     : 'http://localhost:8080/auth/facebook/callback',
+        'callbackURL'     : 'https://bandtogether-app.herokuapp.com/auth/facebook/callback',
         'profileURL'      : 'https://graph.facebook.com/v2.5/me?fields=first_name,last_name,email',
         'profileFields'   : ['id', 'email', 'name'] // For requesting permissions from Facebook API
 

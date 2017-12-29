@@ -41,8 +41,11 @@ div.box {
   background-color: white;
   opacity: .8;
   width: 600px;
-  margin: 60px auto 20px;
+  margin: 0 auto;
   border-radius: 3px;
+  position: relative;
+  z-index: -1;
+  padding-top: 30px;
 }
 
 #messages li {
@@ -58,9 +61,7 @@ div.box {
 }
 
 #messages {
-  margin-bottom: 40px;
   list-style-type: none;
-  margin-top: 70px;
   padding: 0;
 }
 
@@ -86,6 +87,13 @@ div.box {
 
 .notyours {
   background: #eee;
+}
+
+.chat-username {
+  font-family: 'Amatic SC';
+  font-size: 24px;
+  text-align: center;
+  padding: 10px;
 }
 
 @media only screen and (max-width: 650px) {

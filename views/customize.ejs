@@ -76,7 +76,7 @@
 <script>
 
   $('form.save-stuff').submit (function(e) {
-    //event.preventDefault();
+    e.preventDefault();
       let bio = $('textarea[name="band-bio"]').val();
       let name = $('input[name="band-name"]').val();
       let youtube = $('.youtubeUrl').val();
@@ -104,7 +104,8 @@
             },
             function(data, status){
                 console.log("Data: " + data + "\nStatus: " + status);
-                window.location.href='/profile';
+                window.location='/profile';
+
             });
 
       });
