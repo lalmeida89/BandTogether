@@ -25,6 +25,7 @@
 
     <% for (var i = 0; i < all.length; i++) { %>
       <li data-id= '<%= all[i].id %>' class = "<%= i !== 0 ? 'card': 'card current' %>">
+        <h2 class="profile-header"> People near you </h2>
         <h2 class='profile-intro'><span id='name'><%= all[i].name %></span><span><%= all[i].genres %></span><span>Looking for: <%=all[i].seeking %></span></h2>
         <p class='profile-bio'><%= all[i].bio %></p>
         <h2 class="audition-header"> My Audition </h2>
@@ -36,7 +37,7 @@
     <% } %>
 
     <li class = 'card current' id='end'>
-      <h2 class='profile-intro'><a href='/dashboard'>Refresh</a></h2>
+      <h3 class='noLove'>We're having a hard time finding <br>people near you. Try <a href='/dashboard'>Refreshing your page</a> <br>or start chatting with your matches.</h2>
 
     </li>
 

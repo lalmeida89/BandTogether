@@ -44,7 +44,7 @@ body {
 
 .genreChoicesSection, .bandLookingFor, .youtubeSubmit, .stage-name{
   text-align: left;
-  font-family: 'Unica One';
+  font-family: 'Quicksand', sans-serif;
 }
 
 .save-button {
