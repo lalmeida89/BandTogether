@@ -1,0 +1,95 @@
+<!doctype html>
+<html>
+<head>
+    <title>Band Together</title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+    <link href="app.css" rel="stylesheet" type="text/css" />
+    <link href="mobile.css" rel="stylesheet" type="text/css" />
+    <% include partials/head %>
+    <style>
+        /*li          { opacity : 0; transition : all 1.s; list-style: none; text-align: left; display:none;}
+        li.selected { opacity: 0; display: none;}
+        li.next     { opacity : 1; display: block;}*/
+        li.current { display: block; opacity: 1; margin: auto;}
+        .hidden    { display: none;}
+    </style>
+
+</head>
+
+<body>
+
+  <header>
+    <% include partials/intro-header %>
+  </header>
+
+    <ul class='introSlide '>
+      <li class ='first-slide slide' >
+        <h2 class='slide-header'>Discover new and interesting musicians near you</h2>
+        <img class='firstSlide-img' src='https://image.ibb.co/c3xfEw/Screen_Shot_2017_12_30_at_1_41_32_AM.png" alt="Screen_Shot_2017_12_30_at_1_41_32_AM" border="0"'>
+        <button class='firstSlide-nxtBtn nxtBtn'><i class="fa fa-arrow-right" aria-hidden="true"></i></button>
+      </li>
+
+      <li class ='secondSlide slide hidden' >
+        <h2 class='slide-header'>Thumbs up to jam with someone or thumbs down to pass</h2>
+        <img class='firstSlide-img' src='https://image.ibb.co/bVpkEw/Screen_Shot_2017_12_30_at_2_11_37_AM.png' alt="Screen_Shot_2017_12_30_at_1_41_32_AM" border="0">
+        <button class='secondSlide-prvBtn prvBtn'><i class="fa fa-arrow-left" aria-hidden="true"></i></button>
+        <button class='secondSlide-nxtBtn nxtBtn'><i class="fa fa-arrow-right" aria-hidden="true"></i></button>
+      </li>
+
+      <li class ='thirdSlide slide hidden' >
+        <h2 class='slide-header'>If they give you the thumbs up, it's a Match!!</h2>
+        <img class='firstSlide-img' src='https://image.ibb.co/bVpkEw/Screen_Shot_2017_12_30_at_2_11_37_AM.png' alt="Screen_Shot_2017_12_30_at_2_11_37_AM" border="0">
+        <button class='thirdSlide-prvBtn prvBtn'><i class="fa fa-arrow-left" aria-hidden="true"></i></button>
+        <button class='thirdSlide-nxtBtn nxtBtn'><i class="fa fa-arrow-right" aria-hidden="true"></i></button>
+      </li>
+
+      <li class ='fourthSlide slide hidden' >
+        <h2 class='slide-header'>Start chatting with people you've matched</h2>
+        <img class='firstSlide-img' src='https://image.ibb.co/c3xfEw/Screen_Shot_2017_12_30_at_1_41_32_AM.png" alt="Screen_Shot_2017_12_30_at_1_41_32_AM" border="0"'>
+        <h3 class='finalSlide-footer'>Hit next to customize your profile and start meeting people!</h3>
+        <button class='fourthSlide-prvBtn prvBtn'><i class="fa fa-arrow-left" aria-hidden="true"></i></button>
+        <button class='fourthSlide-nxtBtn nxtBtn'><i class="fa fa-arrow-right" aria-hidden="true"></i></button>
+      </li>
+
+    </ul>
+
+</body>
+
+<script
+  src="https://code.jquery.com/jquery-3.2.1.js"
+  integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+  crossorigin="anonymous"></script>
+
+<script>
+  $('.firstSlide-nxtBtn').click(function(e){
+    $('.first-slide').addClass('hidden');
+    $('.secondSlide').removeClass('hidden');
+  });
+
+  $('.secondSlide-nxtBtn').click(function(e){
+    $('.secondSlide').addClass('hidden');
+    $('.thirdSlide').removeClass('hidden');
+  });
+
+  $('.thirdSlide-nxtBtn').click(function(e){
+    $('.thirdSlide').addClass('hidden');
+    $('.fourthSlide').removeClass('hidden');
+  });
+
+  $('.prvBtn').click (function(e) {
+    window.par = this;
+    (this).addClass('hidden');
+    $(this).parent().previous().addClass('current');
+  });
+
+  $('.nxtBtn').click (function(e) {
+    window.par = this;
+    let slider = window.par
+    $(slider).addClass('hidden');
+    $(this).parent().next().addClass('current');
+  });
+
+</script>
+
+</html>

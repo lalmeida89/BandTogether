@@ -8,9 +8,13 @@ body  {
   display:none;
 }
 
-@media only screen and (max-width: 640px) {
+@media only screen and (max-width: 450px) {
 
   .card {
     width : 100%;
+  }
+
+  .modal-content {
+    width: 100%;
   }
 }

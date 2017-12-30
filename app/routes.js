@@ -149,16 +149,21 @@ module.exports = function(app, passport) {
 
         // process the signup form
         app.post('/', passport.authenticate('local-signup', {
-            successRedirect : '/customize', // redirect to the edit profile section
+            successRedirect : '/intro', // redirect to the edit profile section
             failureRedirect : '/', // redirect back to the signup page if there is an error
             failureFlash : true // allow flash messages
         }));
 
         app.post('/signup', passport.authenticate('local-signup', {
-          successRedirect : '/customize', // redirect to the edit profile section
+          successRedirect : '/intro', // redirect to the edit profile section
           failureRedirect : '/', // redirect back to the signup page if there is an error
           failureFlash : true // allow flash messages
         }));
+
+
+        app.get('/intro', isLoggedIn, function(req,res) {
+          res.render('intro.ejs');
+        });
 
         app.get('/customize', isLoggedIn, function(req, res) {
           console.log(req.user);
@@ -190,7 +195,7 @@ module.exports = function(app, passport) {
           if (match && match[2].length == 11) {
             return match[2];
           } else {
-            return 'error';
+            return 'PUZn1I6llJs';
           }
         }
 
