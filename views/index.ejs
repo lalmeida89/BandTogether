@@ -22,31 +22,28 @@
     <% include partials/intro-header %>
   </header>
 
+      <!--sign up, or if you already have an account, login takes you to the login page-->
     <div class="card intro">
 
-        <h3 class='intro-header'>Sign up to start a band, join one, or just jam with people nearby</h3>
-        <div class='fb-login'>
-          <a href="/auth/facebook" class="fb-button"><span class="fa fa-facebook"></span>  Log in with Facebook</a>
+      <h3 class='intro-header'>Sign up to start a band, join one, or just jam with people nearby</h3>
+      <div class='fb-login'>
+        <a href="/auth/facebook" class="fb-button"><span class="fa fa-facebook"></span>  Log in with Facebook</a>
+      </div>
+      <div class='divider one'></div>
+      <div class='divider-or'>OR</div>
+      <div class='divider two'></div>
+
+      <form class='signup-form' action="/" method="post">
+        <div class="form-group">
+          <input type="email" class="form-control index-signup" name="email" placeholder="E-mail">
         </div>
-        <div class='divider one'></div>
-        <div class='divider-or'>OR</div>
-        <div class='divider two'></div>
+        <div class="form-group">
+          <input type="password" class="form-control index-signup" name="password" placeholder="Password">
+        </div>
+        <button type="submit" class="signup-button">Create Account</button>
+        <p class='footer'>Have an Account? <a href="/login">Login</a></p>
+      </form>
 
-        <form class='signup-form' action="/" method="post">
-            <div class="form-group">
-                <input type="email" class="form-control index-signup" name="email" placeholder="E-mail">
-            </div>
-            <div class="form-group">
-                <input type="password" class="form-control index-signup" name="password" placeholder="Password">
-            </div>
-            <!--<a href="/customize" type='submit' class="signup-button"> Signup</a>-->
-            <button type="submit" class="signup-button">Create Account</button>
-            <p class='footer'>Have an Account? <a href="/login">Login</a></p>
-          </form>
-
-
-        <!--<a href="/auth/twitter" class="btn btn-info"><span class="fa fa-twitter"></span> Twitter</a>
-        <a href="/auth/google" class="btn btn-danger"><span class="fa fa-google-plus"></span> Google+</a>-->
     </div>
 
 

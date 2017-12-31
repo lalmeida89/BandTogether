@@ -20,14 +20,16 @@
     <% include partials/matches-header %>
   </header>
 
+      <!--loops through matches and displays each in the card
+      if there are no matches, display .noLove message-->
       <ul class='card'>
         <h2 class='profile-header'>Your matches</h2>
           <% for(var i=0; i<user.matches.length; i++) { %>
             <li class='matches-list'>
-                  <a href='chat/<%= user.matches[i].chatId %>'>
-                      <%= user.matches[i].userName %>
-                  </a>
-              </li>
+              <a href='chat/<%= user.matches[i].chatId %>'>
+                  <%= user.matches[i].userName %>
+              </a>
+            </li>
           <% } %>
           <% if (user.matches.length <= 0) { %>
             <h3 class='noLove'> You currently have no matches. Head to the <a href='/dashboard'>dashboard</a> to find people near you. </h3>

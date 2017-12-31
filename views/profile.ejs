@@ -19,57 +19,21 @@
     <% include partials/profile-header %>
   </header>
 
+    <!--display profile info taken from the customize page.
+    the cog gives a dropdown menu with logout and edit options-->
+    <li class='card'>
+      <h2 class='profile-header'> Your Profile </h2>
+      <i class="fa fa-cog" aria-hidden="true"></i>
+      <div class='dropdown-content' id='myDropdown'>
+        <a href='/customize'>Edit Profile</a>
+        <a href='/logout'>Log out</a>
+      </div>
+      <h2 class='profile-intro'><%= user.name %><span><%= user.genres %></span><span>Looking for: <%=user.seeking %></span></h2>
+      <p class='profile-bio'><%= user.bio %></p>
+      <h2 class="audition-header"> My Audition </h2>
+      <iframe width="286" height="200" src="//www.youtube.com/embed/<%= user.youtube %>" frameborder="0" allowfullscreen></iframe>
+    </li>
 
-        <li class='card'>
-          <h2 class='profile-header'> Your Profile </h2>
-          <i class="fa fa-cog" aria-hidden="true"></i>
-          <div class='dropdown-content' id='myDropdown'>
-            <a href='/customize'>Edit Profile</a>
-            <a href='/logout'>Log out</a>
-          </div>
-          <h2 class='profile-intro'><%= user.name %><span><%= user.genres %></span><span>Looking for: <%=user.seeking %></span></h2>
-          <p class='profile-bio'><%= user.bio %></p>
-          <h2 class="audition-header"> My Audition </h2>
-          <iframe width="286" height="200" src="//www.youtube.com/embed/<%= user.youtube %>" frameborder="0" allowfullscreen></iframe>
-          <ul>
-          <% for(var i=0; i<user.matches.length; i++) { %>
-            <!--  <li>
-                  <a href='chat/<%= user.matches[i].chatId %>'>
-                      <%= user.matches[i].userName %>
-                      <%= user.matches[i].userId %>
-                      <%= user.matches[i].email %>
-                  </a>
-              </li>-->
-          <% } %>
-        </ul>
-        </li>
-<!--<div class="container">
-
-
-    <div class="page-header text-center">
-        <h1>Your Profile</h1>
-    </div>
-
-      <strong>name</strong>: <%= user.name %><br>
-      <strong>bio</strong>: <%= user.bio %><br>
-      <strong>genres</strong>: <%= user.genres %><br>
-      <strong>seeking</strong>: <%= user.seeking %><br>
-      <strong>YouTube URL</strong>: <%= user.youtube %><br>
-
-
-    <ul>
-    <% for(var i=0; i<user.matches.length; i++) { %>
-        <li>
-            <a href='chat/<%= user.matches[i].chatId %>'>
-                <%= user.matches[i].userName %>
-                <%= user.matches[i].userId %>
-                <%= user.matches[i].email %>
-            </a>
-        </li>
-    <% } %>
-  </ul>
-
-</div>-->
 
 <script
   src="https://code.jquery.com/jquery-3.2.1.js"
@@ -80,29 +44,14 @@
 
 <script>
 
-
-/*  $('button').click (function(e) {
-    window.par = this;
-    console.log($(this).parent().data('id'))
-    let id = $(this).parent().data('id');
-    let value = this.value;
-    $.post('',
-    {
-        id    : id,
-        value : value
-    },
-    function(data, status){
-        console.log("Data: " + data + "\nStatus: " + status);
+    //clicking on the cog opens the drop down menu
+    $('.fa-cog').click(function(e){
+      $('#myDropdown').toggle('.show');
     });
-});
-*/
-$('.fa-cog').click(function(e){
-  $('#myDropdown').toggle('.show');
-});
 
-
-window.onclick = function(event) {
-  if (!event.target.matches('.fa-cog')) {
+    //clicking anywhere on the window will close the dropdown
+    window.onclick = function(event) {
+      if (!event.target.matches('.fa-cog')) {
 
     var dropdowns = document.getElementsByClassName("dropdown-content");
     var i;
@@ -110,10 +59,7 @@ window.onclick = function(event) {
       var openDropdown = dropdowns[i];
       if (openDropdown.classList.contains('show')) {
         openDropdown.classList.remove('show');
-      }
-    }
-  }
-}
+    }}}};
 
 
  </script>

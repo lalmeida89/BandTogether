@@ -8,13 +8,6 @@
     <link href="mobile.css" rel="stylesheet" type="text/css" />
 
     <% include partials/head %>
-    <style>
-        /*li          { opacity : 0; transition : all 1.s; list-style: none; text-align: left; display:none;}
-        li.selected { opacity: 0; display: none;}
-        li.next     { opacity : 1; display: block;}*/
-        li.current { display: block; opacity: 1; margin: auto;}
-        .hidden    { display: none;}
-    </style>
 
 </head>
 
@@ -24,61 +17,61 @@
     <% include partials/intro-header %>
   </header>
 
-    <ul class='introSlide '>
-      <li class ='first-slide slide' >
-        <h2 class='slide-header'>Discover new <br> musicians near you</h2>
-        <img class='firstSlide-img slide-img' src='https://image.ibb.co/c3xfEw/Screen_Shot_2017_12_30_at_1_41_32_AM.png" alt="dashboard-screenshot" border="0"'>
-        <div class='firstDots dots'>
-          <i class="fa fa-circle" aria-hidden="true"></i>
-          <i class="fa fa-circle-o" aria-hidden="true"></i>
-          <i class="fa fa-circle-o" aria-hidden="true"></i>
-          <i class="fa fa-circle-o" aria-hidden="true"></i>
-        </div>
-        <button class='firstSlide-nxtBtn nxtBtn'><i class="fa fa-arrow-right" aria-hidden="true"></i></button>
-      </li>
+    <!--after sign-up, an intro of four slides shows how the app works-->
+  <ul class='introSlide '>
+    <li class ='first-slide slide' >
+      <h2 class='slide-header'>Discover new <br> musicians near you</h2>
+      <img class='firstSlide-img slide-img' src='https://image.ibb.co/c3xfEw/Screen_Shot_2017_12_30_at_1_41_32_AM.png" alt="dashboard-screenshot" border="0"'>
+      <div class='firstDots dots'>
+        <i class="fa fa-circle" aria-hidden="true"></i>
+        <i class="fa fa-circle-o" aria-hidden="true"></i>
+        <i class="fa fa-circle-o" aria-hidden="true"></i>
+        <i class="fa fa-circle-o" aria-hidden="true"></i>
+      </div>
+      <button class='firstSlide-nxtBtn nxtBtn'><i class="fa fa-arrow-right" aria-hidden="true"></i></button>
+    </li>
 
-      <li class ='secondSlide slide hidden' >
-        <h2 class='slide-header'>Thumbs up to jam <br> with someone or <br>thumbs down to pass</h2>
-        <img class='firstSlide-img slide-img' src='https://image.ibb.co/igQe7G/Screen_Shot_2017_12_30_at_2_48_03_PM.png' alt="profile-screenshot" border="0">
-        <button class='secondSlide-prvBtn prvBtn'><i class="fa fa-arrow-left" aria-hidden="true"></i></button>
-        <div class='secondDots dots'>
-          <i class="fa fa-circle-o" aria-hidden="true"></i>
-          <i class="fa fa-circle" aria-hidden="true"></i>
-          <i class="fa fa-circle-o" aria-hidden="true"></i>
-          <i class="fa fa-circle-o" aria-hidden="true"></i>
-        </div>
-        <button class='secondSlide-nxtBtn nxtBtn'><i class="fa fa-arrow-right" aria-hidden="true"></i></button>
-      </li>
+    <li class ='secondSlide slide hidden' >
+      <h2 class='slide-header'>Thumbs up to jam <br> with someone or <br>thumbs down to pass</h2>
+      <img class='firstSlide-img slide-img' src='https://image.ibb.co/igQe7G/Screen_Shot_2017_12_30_at_2_48_03_PM.png' alt="profile-screenshot" border="0">
+      <button class='secondSlide-prvBtn prvBtn'><i class="fa fa-arrow-left" aria-hidden="true"></i></button>
+      <div class='secondDots dots'>
+        <i class="fa fa-circle-o" aria-hidden="true"></i>
+        <i class="fa fa-circle" aria-hidden="true"></i>
+        <i class="fa fa-circle-o" aria-hidden="true"></i>
+        <i class="fa fa-circle-o" aria-hidden="true"></i>
+      </div>
+      <button class='secondSlide-nxtBtn nxtBtn'><i class="fa fa-arrow-right" aria-hidden="true"></i></button>
+    </li>
 
-      <li class ='thirdSlide slide hidden' >
-        <h2 class='slide-header'>If they give you the <br> thumbs up, it's a Match!!</h2>
-        <img class='firstSlide-img slide-img' src='https://image.ibb.co/eumdjw/Screen_Shot_2017_12_30_at_4_05_05_PM.png' alt="its-a-match-screenshot" border="0">
-        <button class='thirdSlide-prvBtn prvBtn'><i class="fa fa-arrow-left" aria-hidden="true"></i></button>
-        <div class='thirdDots dots'>
-          <i class="fa fa-circle-o" aria-hidden="true"></i>
-          <i class="fa fa-circle-o" aria-hidden="true"></i>
-          <i class="fa fa-circle" aria-hidden="true"></i>
-          <i class="fa fa-circle-o" aria-hidden="true"></i>
-        </div>
-        <button class='thirdSlide-nxtBtn nxtBtn'><i class="fa fa-arrow-right" aria-hidden="true"></i></button>
+    <li class ='thirdSlide slide hidden' >
+      <h2 class='slide-header'>If they give you the <br> thumbs up, it's a Match!!</h2>
+      <img class='firstSlide-img slide-img' src='https://image.ibb.co/eumdjw/Screen_Shot_2017_12_30_at_4_05_05_PM.png' alt="its-a-match-screenshot" border="0">
+      <button class='thirdSlide-prvBtn prvBtn'><i class="fa fa-arrow-left" aria-hidden="true"></i></button>
+      <div class='thirdDots dots'>
+        <i class="fa fa-circle-o" aria-hidden="true"></i>
+        <i class="fa fa-circle-o" aria-hidden="true"></i>
+        <i class="fa fa-circle" aria-hidden="true"></i>
+        <i class="fa fa-circle-o" aria-hidden="true"></i>
+      </div>
+      <button class='thirdSlide-nxtBtn nxtBtn'><i class="fa fa-arrow-right" aria-hidden="true"></i></button>
+    </li>
 
-      </li>
+    <li class ='fourthSlide slide hidden' >
+      <h2 class='slide-header'>Start chatting with people <br> you've matched!</h2>
+      <img class='firstSlide-img slide-img' src='https://image.ibb.co/fj8urb/Screen_Shot_2017_12_30_at_4_41_03_PM.png" alt="chat-screenshot" border="0"'>
+      <h3 class='finalSlide-footer'>Hit next to customize your profile <br> and start meeting people!</h3>
+      <button class='fourthSlide-prvBtn prvBtn'><i class="fa fa-arrow-left" aria-hidden="true"></i></button>
+      <div class='fourthDots dots'>
+        <i class="fa fa-circle-o" aria-hidden="true"></i>
+        <i class="fa fa-circle-o" aria-hidden="true"></i>
+        <i class="fa fa-circle-o" aria-hidden="true"></i>
+        <i class="fa fa-circle" aria-hidden="true"></i>
+      </div>
+      <button class='fourthSlide-nxtBtn nxtBtn'><i class="fa fa-arrow-right" aria-hidden="true"></i></button>
+    </li>
 
-      <li class ='fourthSlide slide hidden' >
-        <h2 class='slide-header'>Start chatting with people <br> you've matched!</h2>
-        <img class='firstSlide-img slide-img' src='https://image.ibb.co/fj8urb/Screen_Shot_2017_12_30_at_4_41_03_PM.png" alt="chat-screenshot" border="0"'>
-        <h3 class='finalSlide-footer'>Hit next to customize your profile <br> and start meeting people!</h3>
-        <button class='fourthSlide-prvBtn prvBtn'><i class="fa fa-arrow-left" aria-hidden="true"></i></button>
-        <div class='fourthDots dots'>
-          <i class="fa fa-circle-o" aria-hidden="true"></i>
-          <i class="fa fa-circle-o" aria-hidden="true"></i>
-          <i class="fa fa-circle-o" aria-hidden="true"></i>
-          <i class="fa fa-circle" aria-hidden="true"></i>
-        </div>
-        <button class='fourthSlide-nxtBtn nxtBtn'><i class="fa fa-arrow-right" aria-hidden="true"></i></button>
-      </li>
-
-    </ul>
+  </ul>
 
 </body>
 
@@ -89,7 +82,7 @@
 
 <script>
 
-    //next-button functionality on each intro slide
+    //next-button functionality on each intro slide, hiddes current slide, displays next slide
   $('.firstSlide-nxtBtn').click(function(e){
     $('.first-slide').addClass('hidden');
     $('.secondSlide').removeClass('hidden');
@@ -105,13 +98,14 @@
     $('.fourthSlide').removeClass('hidden');
   });
 
+    //hides final slide, redirects to customize page
   $('.fourthSlide-nxtBtn').click (function(e) {
     $('.fourthSlide').addClass('hidden');
     window.location ='/customize';
   });
 
 
-    //previous-button functionality on each slide
+    //previous-button functionality on each slide, hides current and shows previous slide
   $('.secondSlide-prvBtn').click (function(e) {
     $('.secondSlide').addClass('hidden');
     $('.first-slide').removeClass('hidden');

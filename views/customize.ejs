@@ -20,7 +20,7 @@
         <h1 class='page-header'>Edit Your Profile</h1>
     </div>
 
-    <form class='save-stuff'>    <!-- band info, bio, and images. -->
+    <form class='save-stuff'>    <!-- band info, bio, images, skills, and what we're looking for. -->
       <div class="band-info">
         <div class="form-group band-info">
           <input type="text" class="form-control stage-name" name="band-name" placeholder="Stage Name" required value='<%= user.name %>'/>
@@ -50,7 +50,7 @@
           <input class='skill' type="checkbox" name="skill" value="Lead Guitarist" <%= user.seeking.indexOf("Lead Guitarist")> -1 ? "checked" : "" %>> Lead Guitar<br>
           <input class='skill' type="checkbox" name="skill" value="Rhythm Guitarist" <%= user.seeking.indexOf("Rhythm Guitarist")> -1 ? "checked" : "" %>> Rhythm Guitar<br>
           <input class='skill' type="checkbox" name="skill" value="Bassist" <%= user.seeking.indexOf("Bassist")> -1 ? "checked" : "" %>> Bass Guitar<br>
-          <input class='skill' type="checkbox" name="skill" value="Drummer" <%= user.seeking.indexOf("Drummer")> -1 ? "checked" : "" %>> Drumms<br>
+          <input class='skill' type="checkbox" name="skill" value="Drummer" <%= user.seeking.indexOf("Drummer")> -1 ? "checked" : "" %>> Drums<br>
           <input class='skill' type="checkbox" name="skill" value="Keyboardist" <%= user.seeking.indexOf("Keyboardist")> -1 ? "checked" : "" %>> Keyboard<br>
           <input class='skill' type="checkbox" name="skill" value="Saxophonist" <%= user.seeking.indexOf("Saxophonist")> -1 ? "checked" : "" %>> Saxophone<br>
           <input class='skill' type="checkbox" name="skill" value="Upright Bassist" <%= user.seeking.indexOf("Upright Bassist")> -1 ? "checked" : "" %>> Upright Bass<br>
@@ -75,18 +75,18 @@
 
 <script>
 
+    //on form submit, we're taking the value of all fields
+    //and posting them to our profile. then redirects to profile page
   $('form.save-stuff').submit (function(e) {
     e.preventDefault();
       let bio = $('textarea[name="band-bio"]').val();
       let name = $('input[name="band-name"]').val();
       let youtube = $('.youtubeUrl').val();
-      console.log(name);
-      console.log(bio);
       let genres = [];
       $.each($("input[name='genre']:checked"), function(){
           genres.push($(this).val());
           console.log(genres);
-        });
+      });
 
       let seeking = [];
       $.each($("input[name='skill']:checked"), function(){
@@ -103,9 +103,7 @@
 
             },
             function(data, status){
-                console.log("Data: " + data + "\nStatus: " + status);
                 window.location='/profile';
-
             });
 
       });

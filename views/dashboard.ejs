@@ -22,7 +22,7 @@
   <header>
     <% include partials/header %>
   </header>
-
+    <!--loop through all profiles, posting one at a time-->
     <% for (var i = 0; i < all.length; i++) { %>
       <li data-id= '<%= all[i].id %>' class = "<%= i !== 0 ? 'card': 'card current' %>">
         <h2 class="profile-header"> People near you </h2>
@@ -35,7 +35,7 @@
       </li>
 
     <% } %>
-
+      <!--lies behing all the cards. shows this message when no more profiles are available-->
     <li class = 'card current' id='end'>
       <h3 class='noLove'>We're having a hard time finding <br>people near you. Try <a href='/dashboard'>Refreshing your page</a> <br>or start chatting with your matches.</h2>
 
@@ -62,7 +62,9 @@
   crossorigin="anonymous"></script>
 
 <script>
-
+    //on a thumbs up/thumbs down, we find the value of the button, like or dislike,
+    //and post that information to that user using the id and username
+    //hides current card and shows next one.
   $('.lk-btn').click (function(e) {
     window.par = this;
     console.log($(this).parent().data('id'))
@@ -77,24 +79,20 @@
         value : value,
         name  : name
     },
-    function(data, status){         //show modal
+    function(data, status){         //show modal when a match occurs
       if (data.match != null) {
           console.log($('.modal'), 'butt')
           $('.modal').removeClass('hidden');
           let feedback = $('.modal-content')
           feedback.find('.small-matched-txt').html('You and ' + name + ' were meant to jam together!');
-      }
-      $('.close'||!'.modal').click(function(e) {
-        $('.modal').addClass('hidden');//close the modal when clicking on the x or outside of the modal window
-      });
-        console.log(data);
-    }
-  );
-});
+      };
 
-  /*$('.chatRedirect').click(function(e){
-    window.location.href='/chat';
-  });*/
+      window.click(function(e) {
+        $('.modal').addClass('hidden');//close the modal when clicking anywhere
+      });
+    });
+  });
+
 
 </script>
 

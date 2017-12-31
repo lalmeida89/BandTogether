@@ -30,7 +30,6 @@
     </div>
       <form action="">
         <input id="m" autocomplete="off" placeholder="Type anything..."/><button>Send</button>
-        <!--<i class="fa fa-paper-plane" aria-hidden="true"></i>-->
       </form>
 
 
@@ -44,8 +43,7 @@
         var socket = io();
         var me = <%- JSON.stringify(user._id) %>;
         var meName = <%- JSON.stringify(user.name) %>;
-        var them = <%- JSON.stringify(chats) %>
-        console.log(me, meName, them);
+        console.log(me, meName);
         var room = window.location.pathname.split("/").pop();
 
           socket.on('connect', function() {
@@ -53,6 +51,7 @@
               socket.emit('room', room);
             });
 
+            //on message form submit, post message to chats db.
         $('form').submit(function(){
           $.post('', {'chat' : $('#m').val()}, function(result) {
             });
@@ -61,6 +60,8 @@
           $('#m').val('');
           return false;
         });
+
+        //If i sent the message, add class 'yours' which will align message to the right
         socket.on('chat message', function(msg){
           console.log(msg);
           if (msg.owner == me) {

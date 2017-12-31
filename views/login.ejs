@@ -9,6 +9,7 @@
     <% include partials/head %>
 
     <style>
+    /*background animation*/
         body         { animation: backgroundScroll 10s linear ; }
         @keyframes backgroundScroll { from {background-position: 0 0;} to {background-position: -400px 0;} }
         @import url(https://fonts.googleapis.com/css?family=Roboto:300,400,600);
@@ -22,50 +23,28 @@
     <% include partials/intro-header %>
   </header>
 
-
-    <div class="card intro">
-
+    <!--login card with option to sign up if you dont have an account-->
+  <div class="card intro">
     <h1 class='login-header'>Log in</h1>
-
     <% if (message.length > 0) { %>
         <div class="alert alert-danger"><%= message %></div>
     <% } %>
-
-    <!-- LOGIN FORM -->
-    <!--<form action="/login" method="post">
-        <div class="form-group">
-            <label>Email</label>
-            <input type="email" class="form-control" name="email">
-        </div>
-        <div class="form-group">
-            <label>Password</label>
-            <input type="password" class="form-control" name="password">
-        </div>
-
-        <button type="submit" class="btn btn-warning btn-primary">Login</button>
-
-    </form>-->
-
     <form class='signup-form' action="/login" method="post">
-        <div class="form-group">
-            <input type="email" class="form-control" name="email" placeholder="E-mail">
-        </div>
-        <div class="form-group">
-            <input type="password" class="form-control" name="password" placeholder="Password">
-        </div>
-        <!--<a href="/customize" type='submit' class="signup-button"> Signup</a>-->
-        <button type="submit" class="signup-button">Log In</button>
+      <div class="form-group">
+          <input type="email" class="form-control" name="email" placeholder="E-mail">
+      </div>
+      <div class="form-group">
+          <input type="password" class="form-control" name="password" placeholder="Password">
+      </div>
+      <button type="submit" class="signup-button">Log In</button>
 
-      </form>
+    </form>
 
+    <div class='new-signup'>
+      <p class='footer'>Don't have an account? <a href="/">Sign Up</a></p>
+    </div>
 
-    <hr>
-  <div class='new-signup'>
-    <p class='footer'>Don't have an account? <a href="/">Sign Up</a></p>
   </div>
-    <!--<p>Need an account? <a href="/signup">Signup</a></p>-->
-
-</div>
 
 </body>
 </html>

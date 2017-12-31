@@ -12,8 +12,6 @@ module.exports = function(app, passport) {
       arr.push(req.user.id);
       console.log(arr);
       User.find( { _id: { $nin: arr } } ).exec().then(x => {
-        //find({_id:{$nin:[ObjectId("5a429caf0a5f1a17eec1340a") ]}})
-        console.log(x, 'ginger')
         res.render('dashboard.ejs', {
             user : req.user,
             all  : x
@@ -22,11 +20,7 @@ module.exports = function(app, passport) {
     });
 
     app.post('/dashboard', isLoggedIn, function(req, res) {
-      console.log(req.body);
-      console.log('pumps', req.body.name);
-      console.log('dumps', req.user.name);
-
-      //check for likes from another user
+    //check for likes from another user
       User.findOne({_id:req.body.id}).exec().then(them => {
         if (them.likes.indexOf(req.user._id) != -1 && req.body.value == 'likes'){
           //match found
@@ -36,9 +30,7 @@ module.exports = function(app, passport) {
           chat.users.push(a);
           chat.users.push(b);
           chat.save(function(err,room) {
-            console.log(req.user);
-            console.log('created chat');
-            console.log(room);
+
             //once we find a match, create match id
             them.matches.push({userId:req.user._id, chatId: room._id, userName: req.user.name});
             req.user.matches.push({userId: req.body.id, chatId: room._id, userName: req.body.name});
@@ -70,10 +62,6 @@ module.exports = function(app, passport) {
       })
     });
 
-    //app.get('/profile/:params', isLoggedIn, function(req, res){
-      //res.render('profile.ejs');
-    //});
-
     app.get('/matches', isLoggedIn, function(req, res) {
       User.find().exec().then(x => {
         console.log(x.matches);
@@ -87,8 +75,6 @@ module.exports = function(app, passport) {
 
     app.get('/chat/:chatId', isLoggedIn, function(req, res) {
       Chat.findOne({_id:req.params.chatId}, function(err, x) {
-        console.log(err, x);
-        console.log('nut muffins');
         res.render('chat.ejs', {
             user   : req.user,
             chats  : x.chats,
@@ -135,11 +121,6 @@ module.exports = function(app, passport) {
         }));
 
         // SIGNUP =================================
-
-        // show the home page (will also have our login links)
-        //app.get('/signup', function(req, res) {
-          //  res.render('customize.ejs');
-        //});
 
 
         // show the signup form
