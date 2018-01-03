@@ -163,10 +163,7 @@ module.exports = function(app, passport) {
             req.user.seeking = req.body.seeking;
             req.user.save(function(err) {
               res.redirect('/profile');
-              console.log('im inside you');
             });
-
-            //res.end();
         });
 
         function getId(url) {
