@@ -7,7 +7,6 @@ module.exports = function(app, passport) {
 
     // PROFILE SECTION =========================
     app.get('/dashboard', isLoggedIn, function(req, res) {
-      console.log(req.user);
       let arr = req.user.likes.concat(req.user.dislikes);
       arr.push(req.user.id);
       console.log(arr);
@@ -64,7 +63,6 @@ module.exports = function(app, passport) {
 
     app.get('/matches', isLoggedIn, function(req, res) {
       User.find().exec().then(x => {
-        console.log(x.matches);
 
         res.render('matches.ejs', {
             user : req.user,
@@ -84,9 +82,6 @@ module.exports = function(app, passport) {
     });
 
     app.post('/chat/:chatId', isLoggedIn, function(req, res) {
-      console.log('save-post');
-      console.log(req.body);
-      console.log(req.params);
       Chat.update(
         { _id: req.params.chatId },
         { $push: { chats: {message : req.body.chat, owner : req.user._id}}},
@@ -147,7 +142,6 @@ module.exports = function(app, passport) {
         });
 
         app.get('/customize', isLoggedIn, function(req, res) {
-          console.log(req.user);
             res.render('customize.ejs', {
               message: req.flash('signupMessage'),
               user : req.user
