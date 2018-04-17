@@ -21,7 +21,7 @@ The app is now live! [Band Together](https://bandtogether-app.herokuapp.com/).
 ![intro page 4](https://image.ibb.co/fj8urb/Screen_Shot_2017_12_30_at_4_41_03_PM.png)
 
 
-####Tech used
+#### Tech used
 
 * JavaScript
 * JQuery
