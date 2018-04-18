@@ -26,6 +26,13 @@ The app is now live! [Band Together](https://bandtogether-app.herokuapp.com/).
 * JavaScript
 * JQuery
 * NodeJS
+* socket-io
+* ExpressJS
+* Passport
+* Mongoose
+* Mongo DB
+* YouTube API
+* FaceBook API
 * HTML
 * EJS
 * CSS
