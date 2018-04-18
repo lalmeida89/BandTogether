@@ -4,6 +4,12 @@ Find musicians near you and start jammin'!!
 
 The app is now live! [Band Together](https://bandtogether-app.herokuapp.com/).
 
+Login with the demo account:
+email: demo@demo
+password: demo
+
+Or create your own account for the full user experience (there is an introduction for first time users).
+
 ### Checkout awesome people near you!
 
 ![intro page](https://image.ibb.co/c3xfEw/Screen_Shot_2017_12_30_at_1_41_32_AM.png)

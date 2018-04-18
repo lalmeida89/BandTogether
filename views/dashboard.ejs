@@ -81,13 +81,12 @@
     },
     function(data, status){         //show modal when a match occurs
       if (data.match != null) {
-          console.log($('.modal'), 'butt')
           $('.modal').removeClass('hidden');
           let feedback = $('.modal-content')
           feedback.find('.small-matched-txt').html('You and ' + name + ' were meant to jam together!');
       };
 
-      window.click(function(e) {
+      $(window).click(function(e) {
         $('.modal').addClass('hidden');//close the modal when clicking anywhere
       });
     });
