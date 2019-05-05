@@ -24,26 +24,34 @@
   </header>
 
     <!--login card with option to sign up if you dont have an account-->
-  <div class="card intro">
-    <h1 class='login-header'>Log in</h1>
-    <% if (message.length > 0) { %>
+    <div class="card intro">
+      <h1 class='login-header'>Log in</h1>
+      <% if (message.length > 0) { %>
         <div class="alert alert-danger"><%= message %></div>
-    <% } %>
-    <form class='signup-form' action="/login" method="post">
-      <div class="form-group">
-          <input type="email" class="form-control" name="email" placeholder="E-mail">
-      </div>
-      <div class="form-group">
-          <input type="password" class="form-control" name="password" placeholder="Password">
-      </div>
-      <button type="submit" class="signup-button">Log In</button>
-    </form>
+      <% } %>
+      <form class='signup-form' action="/login" method="post">
+        <div class="form-group">
+          <input id='email' type="email" class="form-control" name="email" placeholder="E-mail">
+        </div>
+        <div class="form-group">
+          <input id='pword' type="password" class="form-control" name="password" placeholder="Password">
+        </div>
+        <button type="submit" class="signup-button">Log In</button>
+        <button type="submit" onclick="generateSignIn()" class="signup-button demo">Demo</button>
+      </form>
 
-    <div class='new-signup'>
-      <p class='footer'>Don't have an account? <a href="/">Sign Up</a></p>
+      <div class='new-signup'>
+        <p class='footer'>Don't have an account? <a href="/">Sign Up</a></p>
+      </div>
     </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  </body>
 
-  </div>
+  <script type="text/javascript">
+    function generateSignIn(){
+      $('#email').val('demo@demo')
+      $('#pword').val('demo')
+    }
+  </script>
 
-</body>
 </html>
